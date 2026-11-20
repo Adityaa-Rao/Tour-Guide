@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login &amp; Sign Up - Tour Guide</title>
+  <meta name="description" content="Sign in or create a Tour Guide account to manage bookings, earn loyalty points, and unlock exclusive travel perks.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✈️</text></svg>">
+
+  <!-- Fonts & CDN CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@300;400;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Oxygen:wght@300;400;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+  <!-- Navigation Minimal -->
+  <header class="header-wrapper sticky-top">
+    <nav class="newNav container-fluid px-lg-5" id="mainNav">
+      <div class="nav-container">
+        <a href="index.html" class="nav__brand">
+          <div class="brand-icon-wrap"><i class="fa-solid fa-earth-americas brand-globe"></i></div>
+          <span class="nav__logo">Tourguide<span>.</span></span>
+          <span class="brand-tag">Travel Dost</span>
+        </a>
+        <div class="d-flex align-items-center gap-3">
+          <a href="index.html" class="btn btn-sm btn-outline-nav"><i class="ri-arrow-left-line me-1"></i>Back to Home</a>
+          <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Theme"><i class="ri-moon-line moon-icon"></i><i class="ri-sun-line sun-icon"></i></button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Auth Content Section -->
+  <main class="flex-grow-1 py-5 d-flex align-items-center">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-8">
+          
+          <div class="interactive-form-box p-4 p-md-5">
+            
+            <!-- Auth Nav Tabs -->
+            <div class="auth-nav-tabs">
+              <button class="auth-tab-btn active" id="tabBtnLogin">Log In</button>
+              <button class="auth-tab-btn" id="tabBtnSignup">Create Account</button>
+            </div>
+
+            <!-- Feedback Alert -->
+            <div id="authAlert" class="alert d-none mb-3" role="alert"></div>
+
+            <!-- LOGIN FORM -->
+            <form id="loginForm">
+              <div class="mb-3">
+                <label class="form-label small fw-semibold text-muted">Email Address</label>
+                <div class="input-group">
+                  <span class="input-group-text bg-white"><i class="ri-mail-line text-muted"></i></span>
+                  <input type="email" class="form-control" id="loginEmail" placeholder="you@domain.com" required>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <label class="form-label small fw-semibold text-muted mb-0">Password</label>
+                  <a href="#" class="small text-primary text-decoration-none" id="forgotPassLink">Forgot password?</a>
+                </div>
+                <div class="input-group">
+                  <span class="input-group-text bg-white"><i class="ri-lock-line text-muted"></i></span>
+                  <input type="password" class="form-control" id="loginPassword" placeholder="••••••••" required>
+                  <button class="btn btn-outline-secondary toggle-pass-btn" type="button" data-target="loginPassword">
+                    <i class="ri-eye-line"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="form-check mb-4">
+                <input class="form-check-input" type="checkbox" id="rememberMe" checked>
+                <label class="form-check-label small text-muted" for="rememberMe">
+                  Remember me on this browser
+                </label>
+              </div>
+
+              <button type="submit" class="btn btn-accent-coral w-100 py-3 fw-bold mb-3" id="btnLoginSubmit">
+                Sign In to Travel Dost
+              </button>
+            </form>
+
+            <!-- SIGN UP FORM -->
+            <form id="signupForm" class="d-none">
+              <div class="mb-3">
+                <label class="form-label small fw-semibold text-muted">Full Name</label>
+                <div class="input-group">
+                  <span class="input-group-text bg-white"><i class="ri-user-line text-muted"></i></span>
+                  <input type="text" class="form-control" id="signupName" placeholder="Elena Rostova" required>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label small fw-semibold text-muted">Email Address</label>
+                <div class="input-group">
+                  <span class="input-group-text bg-white"><i class="ri-mail-line text-muted"></i></span>
+                  <input type="email" class="form-control" id="signupEmail" placeholder="elena@example.com" required>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label small fw-semibold text-muted">Create Password</label>
+                <div class="input-group">
+                  <span class="input-group-text bg-white"><i class="ri-lock-line text-muted"></i></span>
+                  <input type="password" class="form-control" id="signupPassword" placeholder="Minimum 6 characters" minlength="6" required>
+                  <button class="btn btn-outline-secondary toggle-pass-btn" type="button" data-target="signupPassword">
+                    <i class="ri-eye-line"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="form-check mb-4">
+                <input class="form-check-input" type="checkbox" id="signupTerms" required checked>
+                <label class="form-check-label small text-muted" for="signupTerms">
+                  I agree to the <a href="tnc.html" class="text-primary">Terms &amp; Conditions</a> and <a href="privacy.html" class="text-primary">Privacy Policy</a>
+                </label>
+              </div>
+
+              <button type="submit" class="btn btn-primary-nav w-100 py-3 fw-bold mb-3" id="btnSignupSubmit">
+                Create Free Account
+              </button>
+            </form>
+
+            <!-- Social Auth Divider -->
+            <div class="text-center position-relative my-4">
+              <hr>
+              <span class="position-absolute top-50 start-50 translate-middle px-3 small text-muted" style="background: var(--card-bg);">or continue with</span>
+            </div>
+
+            <!-- Social Buttons -->
+            <div class="d-flex gap-2">
+              <button class="btn btn-outline-secondary w-100 py-2 d-flex align-items-center justify-content-center gap-2 social-auth-btn" data-provider="Google">
+                <i class="fa-brands fa-google text-danger"></i> Google
+              </button>
+              <button class="btn btn-outline-secondary w-100 py-2 d-flex align-items-center justify-content-center gap-2 social-auth-btn" data-provider="Apple">
+                <i class="fa-brands fa-apple text-dark"></i> Apple
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer Minimal -->
+  <footer class="footer py-3 text-center border-top">
+    <p class="mb-0 small text-muted">&copy; 2026 Travel Dost. All rights reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="Theme.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const tabBtnLogin = document.getElementById('tabBtnLogin');
+      const tabBtnSignup = document.getElementById('tabBtnSignup');
+      const loginForm = document.getElementById('loginForm');
+      const signupForm = document.getElementById('signupForm');
+      const authAlert = document.getElementById('authAlert');
+
+      // Tab switcher
+      tabBtnLogin.addEventListener('click', () => {
+        tabBtnLogin.classList.add('active');
+        tabBtnSignup.classList.remove('active');
+        loginForm.classList.remove('d-none');
+        signupForm.classList.add('d-none');
+        authAlert.className = 'alert d-none';
+      });
+
+      tabBtnSignup.addEventListener('click', () => {
+        tabBtnSignup.classList.add('active');
+        tabBtnLogin.classList.remove('active');
+        signupForm.classList.remove('d-none');
+        loginForm.classList.add('d-none');
+        authAlert.className = 'alert d-none';
+      });
+
+      // Password toggle visibility
+      document.querySelectorAll('.toggle-pass-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const targetId = btn.getAttribute('data-target');
+          const targetInput = document.getElementById(targetId);
+          if (targetInput.type === 'password') {
+            targetInput.type = 'text';
+            btn.innerHTML = '<i class="ri-eye-off-line"></i>';
+          } else {
+            targetInput.type = 'password';
+            btn.innerHTML = '<i class="ri-eye-line"></i>';
+          }
+        });
+      });
+
+      // Handle Login
+      loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = document.getElementById('loginEmail').value.trim();
+        const pass = document.getElementById('loginPassword').value.trim();
+
+        if (email && pass) {
+          localStorage.setItem('isLoggedIn', 'true');
+          localStorage.setItem('userEmail', email);
+
+          authAlert.className = 'alert alert-success d-block';
+          authAlert.innerHTML = `<i class="ri-checkbox-circle-fill me-1"></i> Logged in successfully! Redirecting...`;
+
+          setTimeout(() => {
+            window.location.href = 'index.html';
+          }, 1200);
+        }
+      });
+
+      // Handle Sign Up
+      signupForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('signupName').value.trim();
+        const email = document.getElementById('signupEmail').value.trim();
+
+        if (name && email) {
+          localStorage.setItem('isLoggedIn', 'true');
+          localStorage.setItem('userEmail', email);
+          localStorage.setItem('userName', name);
+
+          authAlert.className = 'alert alert-success d-block';
+          authAlert.innerHTML = `<i class="ri-checkbox-circle-fill me-1"></i> Account created for ${name}! Welcome to Travel Dost. Redirecting...`;
+
+          setTimeout(() => {
+            window.location.href = 'index.html';
+          }, 1200);
+        }
+      });
+
+      // Social Auth simulation
+      document.querySelectorAll('.social-auth-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const provider = btn.getAttribute('data-provider');
+          localStorage.setItem('isLoggedIn', 'true');
+          localStorage.setItem('userEmail', `explorer@${provider.toLowerCase()}.com`);
+
+          authAlert.className = 'alert alert-info d-block';
+          authAlert.innerHTML = `<i class="ri-information-fill me-1"></i> Authenticated with ${provider}! Redirecting...`;
+
+          setTimeout(() => {
+            window.location.href = 'index.html';
+          }, 1000);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

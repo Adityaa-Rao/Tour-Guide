@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Map & Malls Explorer - Tourguide </title>
+  <meta name="description" content="Explore global travel destinations, world-famous shopping malls, wonders, and luxury resorts on our full-width interactive map with live geocoding search.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✈️</text></svg>">
+
+  <!-- Fonts & CDN CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@300;400;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Oxygen:wght@300;400;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    .map-page-wrapper {
+      position: relative;
+      height: calc(100vh - 72px);
+      display: flex;
+    }
+
+    #destMap {
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .map-sidebar-floating {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      z-index: 1000;
+      width: 380px;
+      max-height: calc(100% - 32px);
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      backdrop-filter: blur(12px);
+    }
+
+    .map-sidebar-header {
+      padding: 16px 18px 12px;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .map-category-pills-bar {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding: 8px 18px;
+      border-bottom: 1px solid var(--card-border);
+      background: var(--secondary-color);
+      scrollbar-width: none;
+    }
+    .map-category-pills-bar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .sidebar-cat-pill {
+      border: 1px solid var(--card-border);
+      background: var(--card-bg);
+      color: var(--text-dark);
+      padding: 4px 11px;
+      border-radius: 50px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .sidebar-cat-pill:hover,
+    .sidebar-cat-pill.active {
+      background: var(--primary-color);
+      color: #fff;
+      border-color: var(--primary-color);
+    }
+
+    .map-dest-list {
+      overflow-y: auto;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+    }
+
+    .map-dest-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 9px 12px;
+      border-radius: 14px;
+      background: var(--secondary-color);
+      border: 1px solid var(--card-border);
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .map-dest-item:hover,
+    .map-dest-item.active {
+      transform: translateX(4px);
+      border-color: var(--primary-color);
+      background: var(--primary-light);
+      box-shadow: 0 4px 14px rgba(54, 133, 251, 0.15);
+    }
+
+    .map-dest-thumb {
+      width: 52px;
+      height: 52px;
+      border-radius: 10px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .map-controls-floating {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .map-tool-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--card-bg);
+      color: var(--text-dark);
+      border: 1px solid var(--card-border);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .map-tool-btn:hover {
+      background: var(--primary-color);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    /* Custom Leaflet Popup Styling */
+    .leaflet-popup-content-wrapper {
+      border-radius: 18px;
+      padding: 0;
+      overflow: hidden;
+      background: var(--card-bg);
+      color: var(--text-dark);
+      box-shadow: 0 16px 36px rgba(0,0,0,0.28);
+      border: 1px solid var(--card-border);
+    }
+
+    .leaflet-popup-content {
+      margin: 0;
+      width: 290px !important;
+    }
+
+    .popup-img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+    }
+
+    .popup-body {
+      padding: 14px 16px;
+    }
+
+    .popup-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 50px;
+      background: rgba(54, 133, 251, 0.15);
+      color: var(--primary-color);
+      margin-bottom: 6px;
+    }
+
+    .popup-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: var(--text-dark);
+    }
+
+    .popup-desc {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+
+    .popup-price {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--primary-color);
+    }
+
+    @media (max-width: 991px) {
+      .map-sidebar-floating {
+        position: static;
+        width: 100%;
+        max-height: 280px;
+        border-radius: 0;
+      }
+      .map-page-wrapper {
+        flex-direction: column;
+        height: auto;
+      }
+      #destMap {
+        height: 60vh;
+      }
+      .map-controls-floating {
+        top: auto;
+        bottom: 20px;
+        right: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="header-wrapper sticky-top">
+    <nav class="newNav container-fluid px-lg-5" id="mainNav">
+      <div class="nav-container">
+        <a href="index.html" class="nav__brand">
+          <div class="brand-icon-wrap"><i class="fa-solid fa-earth-americas brand-globe"></i></div>
+          <span class="nav__logo">Tourguide<span>.</span></span>
+          <span class="brand-tag">Travel Dost</span>
+        </a>
+
+        <div class="d-flex align-items-center gap-3">
+          <a href="index.html" class="btn btn-sm btn-outline-nav"><i class="ri-home-4-line me-1"></i>Back to Home</a>
+          <a href="packages.html" class="btn btn-sm btn-primary-nav d-none d-sm-inline-flex"><i class="ri-suitcase-line me-1"></i>View Packages</a>
+          <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Theme"><i class="ri-moon-line moon-icon"></i><i class="ri-sun-line sun-icon"></i></button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Full-Width Map Wrapper -->
+  <div class="map-page-wrapper">
+    
+    <!-- Floating Sidebar Navigation -->
+    <div class="map-sidebar-floating">
+      <div class="map-sidebar-header">
+        <div class="d-flex align-items-center justify-content-between mb-2">
+          <h5 class="fw-bold mb-0" style="color: var(--text-dark); font-size: 1.1rem;">
+            <i class="ri-map-pin-2-fill text-danger me-1"></i>Map & Mall Explorer
+          </h5>
+          <span class="badge rounded-pill bg-primary" id="sidebarCountBadge">24 Places</span>
+        </div>
+        <p class="small text-muted mb-2" style="font-size: 0.8rem;">Search any mall, city, or landmark globally or click below to fly to it.</p>
+        
+        <!-- Search bar with geocoding -->
+        <div class="input-group input-group-sm">
+          <span class="input-group-text bg-transparent border-end-0" style="color: var(--text-light);"><i class="ri-search-2-line"></i></span>
+          <input type="text" id="mapSearchInput" class="form-control border-start-0 ps-0" placeholder="Search Dubai Mall, Harrods, Paris...">
+          <button class="btn btn-sm btn-primary" id="btnMapSearch" title="Search Worldwide"><i class="ri-arrow-right-line"></i></button>
+        </div>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="map-category-pills-bar" id="categoryPillsBar">
+        <button class="sidebar-cat-pill active" data-cat="all"><i class="ri-sparkling-fill text-warning"></i> All</button>
+        <button class="sidebar-cat-pill" data-cat="mall"><i class="ri-shopping-bag-3-fill text-danger"></i> Famous Malls</button>
+        <button class="sidebar-cat-pill" data-cat="wonder"><i class="ri-ancient-gate-fill text-primary"></i> Wonders</button>
+        <button class="sidebar-cat-pill" data-cat="beach"><i class="ri-sun-fill text-warning"></i> Beaches</button>
+        <button class="sidebar-cat-pill" data-cat="nature"><i class="ri-mountain-fill text-success"></i> Nature</button>
+        <button class="sidebar-cat-pill" data-cat="luxury"><i class="ri-hotel-bed-fill text-info"></i> Luxury Stays</button>
+      </div>
+
+      <!-- Destination / Mall List -->
+      <div class="map-dest-list" id="mapDestList">
+        <!-- Dynamically rendered / clickable items -->
+      </div>
+    </div>
+
+    <!-- Map Floating Controls -->
+    <div class="map-controls-floating">
+      <button class="map-tool-btn" id="btnToggleLayers" title="Switch Street / Satellite View">
+        <i class="ri-earth-line"></i>
+      </button>
+      <button class="map-tool-btn" id="btnResetMapView" title="Reset Global View">
+        <i class="ri-focus-3-line"></i>
+      </button>
+    </div>
+
+    <!-- Leaflet Map Container -->
+    <div id="destMap"></div>
+
+  </div>
+
+  <!-- Scripts: Leaflet JS & App Scripts -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="Theme.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Complete Places & Malls Database
+      const mapDatabase = [
+        // World Famous Malls & Shopping
+        {
+          id: "dubai-mall",
+          name: "The Dubai Mall",
+          type: "mall",
+          categoryName: "World's Largest Mall",
+          city: "Dubai",
+          country: "United Arab Emirates",
+          coords: [25.1972, 55.2797],
+          rating: 4.9,
+          badge: "Iconic Mall",
+          img: "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?auto=format&fit=crop&w=600&q=80",
+          desc: "World's largest destination for shopping and leisure, featuring 1,200+ luxury stores, the Dubai Aquarium, and underwater zoo.",
+          price: 0
+        },
+        {
+          id: "harrods-london",
+          name: "Harrods Department Store",
+          type: "mall",
+          categoryName: "Luxury Department Store",
+          city: "London",
+          country: "United Kingdom",
+          coords: [51.4994, -0.1633],
+          rating: 4.8,
+          badge: "Historic Luxury",
+          img: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=600&q=80",
+          desc: "World-renowned 7-story luxury department store on Brompton Road in Knightsbridge, celebrated for couture fashion and gourmet Food Halls.",
+          price: 0
+        },
+        {
+          id: "galeries-lafayette",
+          name: "Galeries Lafayette Paris",
+          type: "mall",
+          categoryName: "Haute Couture Shopping",
+          city: "Paris",
+          country: "France",
+          coords: [48.8735, 2.3322],
+          rating: 4.9,
+          badge: "Art Nouveau Mall",
+          img: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=600&q=80",
+          desc: "Opulent flagship French department store famous for its century-old stained-glass dome and panoramic rooftop view over Paris.",
+          price: 0
+        },
+        {
+          id: "siam-paragon",
+          name: "Siam Paragon Bangkok",
+          type: "mall",
+          categoryName: "Mega Lifestyle Mall",
+          city: "Bangkok",
+          country: "Thailand",
+          coords: [13.7466, 100.5348],
+          rating: 4.8,
+          badge: "Top Asian Mall",
+          img: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&w=600&q=80",
+          desc: "One of Asia's largest luxury shopping paradises featuring Sea Life Ocean World, international flagship fashion houses, and Thai gourmet halls.",
+          price: 0
+        },
+        {
+          id: "mall-of-emirates",
+          name: "Mall of the Emirates",
+          type: "mall",
+          categoryName: "Indoor Ski Resort & Mall",
+          city: "Dubai",
+          country: "United Arab Emirates",
+          coords: [25.1181, 55.2007],
+          rating: 4.8,
+          badge: "Ski & Shop",
+          img: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=600&q=80",
+          desc: "Multi-level shopping center housing Ski Dubai (indoor ski slopes with real snow and penguins), luxury fashion avenue, and family entertainment.",
+          price: 0
+        },
+        {
+          id: "mall-of-america",
+          name: "Mall of America",
+          type: "mall",
+          categoryName: "Largest USA Mall",
+          city: "Bloomington, MN",
+          country: "United States",
+          coords: [44.8549, -93.2422],
+          rating: 4.7,
+          badge: "Theme Park Mall",
+          img: "https://images.unsplash.com/photo-1567449303078-57ad995bd302?auto=format&fit=crop&w=600&q=80",
+          desc: "The largest shopping and indoor entertainment complex in the USA, featuring Nickelodeon Universe indoor theme park and SEA LIFE Aquarium.",
+          price: 0
+        },
+        {
+          id: "ginza-six-tokyo",
+          name: "Ginza Six Luxury Complex",
+          type: "mall",
+          categoryName: "Art & Luxury Mall",
+          city: "Tokyo",
+          country: "Japan",
+          coords: [35.6698, 139.7640],
+          rating: 4.85,
+          badge: "Ginza Couture",
+          img: "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=600&q=80",
+          desc: "Tokyo's premier luxury complex in Ginza, famous for high-end designer boutiques, Yayoi Kusama installations, and a serene rooftop garden.",
+          price: 0
+        },
+        {
+          id: "dlf-mall-india",
+          name: "DLF Mall of India",
+          type: "mall",
+          categoryName: "Premier Indian Mall",
+          city: "Noida / Delhi NCR",
+          country: "India",
+          coords: [28.5678, 77.3211],
+          rating: 4.7,
+          badge: "Mega Mall",
+          img: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=600&q=80",
+          desc: "India's premier retail destination spanning 2 million sq. ft. across 7 distinct customized shopping and international dining zones.",
+          price: 0
+        },
+
+        // World Wonders & Landmarks
+        {
+          id: "eiffel-tower",
+          name: "Eiffel Tower",
+          type: "wonder",
+          categoryName: "World Wonder",
+          city: "Paris",
+          country: "France",
+          coords: [48.8584, 2.2945],
+          rating: 4.95,
+          badge: "Top Landmark",
+          img: "https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?auto=format&fit=crop&w=600&q=80",
+          desc: "The iconic wrought-iron lattice tower on the Champ de Mars, offering sparkling evening illumination and panoramic city views.",
+          price: 899
+        },
+        {
+          id: "taj-mahal",
+          name: "Taj Mahal",
+          type: "wonder",
+          categoryName: "UNESCO World Wonder",
+          city: "Agra",
+          country: "India",
+          coords: [27.1751, 78.0421],
+          rating: 5.0,
+          badge: "New 7 Wonder",
+          img: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=600&q=80",
+          desc: "An immense ivory-white marble mausoleum on the south bank of the Yamuna River, commissioned in 1632 by the Mughal emperor Shah Jahan.",
+          price: 640
+        },
+        {
+          id: "colosseum",
+          name: "The Colosseum",
+          type: "wonder",
+          categoryName: "Ancient Amphitheatre",
+          city: "Rome",
+          country: "Italy",
+          coords: [41.8902, 12.4922],
+          rating: 4.9,
+          badge: "Ancient Wonder",
+          img: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=600&q=80",
+          desc: "The largest ancient amphitheater ever built, situated east of the Roman Forum and standing as an eternal symbol of imperial Rome.",
+          price: 780
+        },
+        {
+          id: "burj-khalifa",
+          name: "Burj Khalifa",
+          type: "wonder",
+          categoryName: "Tallest Skyscraper",
+          city: "Dubai",
+          country: "United Arab Emirates",
+          coords: [25.1972, 55.2744],
+          rating: 4.9,
+          badge: "Skyscraper",
+          img: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=600&q=80",
+          desc: "Standing at 828 meters, the world's tallest building features 360-degree observation decks on the 124th and 148th floors.",
+          price: 799
+        },
+        {
+          id: "pyramids-giza",
+          name: "Great Pyramids of Giza",
+          type: "wonder",
+          categoryName: "Ancient World Wonder",
+          city: "Giza, Cairo",
+          country: "Egypt",
+          coords: [29.9792, 31.1342],
+          rating: 4.95,
+          badge: "Ancient Wonder",
+          img: "https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&w=600&q=80",
+          desc: "The oldest and only substantially intact monument of the Seven Wonders of the Ancient World, flanked by the enigmatic Great Sphinx.",
+          price: 850
+        },
+        {
+          id: "machu-picchu",
+          name: "Machu Picchu Citadel",
+          type: "wonder",
+          categoryName: "Inca Sanctuary",
+          city: "Cusco",
+          country: "Peru",
+          coords: [-13.1631, -72.5450],
+          rating: 5.0,
+          badge: "Mountain Wonder",
+          img: "https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&w=600&q=80",
+          desc: "15th-century Inca citadel situated on a mountain ridge 2,430 meters above sea level in the Eastern Cordillera of southern Peru.",
+          price: 980
+        },
+
+        // Paradise Beaches & Coastal
+        {
+          id: "santorini-caldera",
+          name: "Oia Caldera & Sunset",
+          type: "beach",
+          categoryName: "Aegean Paradise",
+          city: "Santorini",
+          country: "Greece",
+          coords: [36.4618, 25.3753],
+          rating: 5.0,
+          badge: "Iconic Coast",
+          img: "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=600&q=80",
+          desc: "Whitewashed cliffside villas and blue-domed churches perched over the sparkling volcanic Aegean Sea caldera.",
+          price: 1150
+        },
+        {
+          id: "bali-nusa-dua",
+          name: "Nusa Dua & Uluwatu",
+          type: "beach",
+          categoryName: "Tropical Surfing & Temples",
+          city: "Bali",
+          country: "Indonesia",
+          coords: [-8.8005, 115.2167],
+          rating: 4.9,
+          badge: "Beach Haven",
+          img: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=600&q=80",
+          desc: "Pristine white sand beaches, five-star luxury beachfront enclaves, and dramatic cliff-edge sea temples.",
+          price: 649
+        },
+        {
+          id: "positano-amalfi",
+          name: "Positano Cliffside",
+          type: "beach",
+          categoryName: "Italian Riviera",
+          city: "Amalfi Coast",
+          country: "Italy",
+          coords: [40.6281, 14.4850],
+          rating: 4.95,
+          badge: "Romantic Coast",
+          img: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=600&q=80",
+          desc: "Steep village cliffs lined with pastel-colored houses, lemon groves, and luxury speedboats cruising to Capri.",
+          price: 1250
+        },
+
+        // Nature & Adventure
+        {
+          id: "matterhorn-zermatt",
+          name: "Matterhorn Glacier",
+          type: "nature",
+          categoryName: "Alpine Peak",
+          city: "Zermatt",
+          country: "Switzerland",
+          coords: [45.9765, 7.7491],
+          rating: 4.95,
+          badge: "Alpine Wonder",
+          img: "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?auto=format&fit=crop&w=600&q=80",
+          desc: "One of the highest summits in the Alps and Europe, famous for year-round glacier skiing and the scenic Gornergrat railway.",
+          price: 799
+        },
+        {
+          id: "grand-canyon",
+          name: "Grand Canyon South Rim",
+          type: "nature",
+          categoryName: "National Park",
+          city: "Arizona",
+          country: "United States",
+          coords: [36.0544, -112.1401],
+          rating: 4.9,
+          badge: "Natural Wonder",
+          img: "https://images.unsplash.com/photo-1474044159687-1ee9f3a51722?auto=format&fit=crop&w=600&q=80",
+          desc: "Steep-sided canyon carved by the Colorado River in Arizona, revealing billions of years of geological history.",
+          price: 1499
+        },
+
+        // Luxury Resorts & Stays
+        {
+          id: "burj-al-arab",
+          name: "Burj Al Arab Jumeirah",
+          type: "luxury",
+          categoryName: "7-Star Luxury Hotel",
+          city: "Dubai",
+          country: "United Arab Emirates",
+          coords: [25.1412, 55.1852],
+          rating: 5.0,
+          badge: "7-Star Luxury",
+          img: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=600&q=80",
+          desc: "The world's only official 7-star hotel, designed like a billowing sail on its own private artificial island.",
+          price: 520
+        },
+        {
+          id: "ritz-paris",
+          name: "The Ritz Paris",
+          type: "luxury",
+          categoryName: "Grand Palace Hotel",
+          city: "Paris",
+          country: "France",
+          coords: [48.8682, 2.3292],
+          rating: 4.98,
+          badge: "Palace Hotel",
+          img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80",
+          desc: "Legendary grand hotel overlooking Place Vendôme, historic retreat of royalty, Hemingway, and Coco Chanel.",
+          price: 890
+        },
+        {
+          id: "marina-bay-sands",
+          name: "Marina Bay Sands",
+          type: "luxury",
+          categoryName: "Integrated Luxury Resort",
+          city: "Singapore",
+          country: "Singapore",
+          coords: [1.2838, 103.8591],
+          rating: 4.9,
+          badge: "Infinity Pool",
+          img: "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&w=600&q=80",
+          desc: "Futuristic 3-tower luxury resort crowned by the Sands SkyPark, boasting the world's longest elevated infinity pool and premier shopping canal.",
+          price: 490
+        }
+      ];
+
+      // Initialize Leaflet Map
+      const map = L.map('destMap', {
+        center: [25.0, 20.0],
+        zoom: 3,
+        minZoom: 2,
+        maxZoom: 18,
+        zoomControl: true
+      });
+
+      const streetLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | Travel Dost',
+        maxZoom: 19
+      }).addTo(map);
+
+      const satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'Tiles &copy; Esri &mdash; Travel Dost World Satellite',
+        maxZoom: 18
+      });
+
+      let isSatellite = false;
+      const btnToggleLayers = document.getElementById('btnToggleLayers');
+      if (btnToggleLayers) {
+        btnToggleLayers.addEventListener('click', () => {
+          if (!isSatellite) {
+            map.removeLayer(streetLayer);
+            satelliteLayer.addTo(map);
+            isSatellite = true;
+            btnToggleLayers.innerHTML = '<i class="ri-map-2-line"></i>';
+            btnToggleLayers.setAttribute('title', 'Switch to Street View');
+          } else {
+            map.removeLayer(satelliteLayer);
+            streetLayer.addTo(map);
+            isSatellite = false;
+            btnToggleLayers.innerHTML = '<i class="ri-earth-line"></i>';
+            btnToggleLayers.setAttribute('title', 'Switch to Satellite View');
+          }
+        });
+      }
+
+      const btnResetMapView = document.getElementById('btnResetMapView');
+      if (btnResetMapView) {
+        btnResetMapView.addEventListener('click', () => {
+          map.flyTo([25.0, 20.0], 3, { animate: true, duration: 1.5 });
+        });
+      }
+
+      // Marker management
+      let markersGroup = L.layerGroup().addTo(map);
+      let currentActiveCat = 'all';
+      let searchResultMarker = null;
+
+      function createCustomIcon(type) {
+        let iconHtml = '<i class="ri-map-pin-fill"></i>';
+        let bgClass = 'style="background: linear-gradient(135deg, #3685fb, #6a5acd);"';
+
+        if (type === 'mall') {
+          iconHtml = '<i class="ri-shopping-bag-3-fill"></i>';
+          bgClass = 'style="background: linear-gradient(135deg, #ff4757, #ff6b81);"';
+        } else if (type === 'wonder') {
+          iconHtml = '<i class="ri-ancient-gate-fill"></i>';
+          bgClass = 'style="background: linear-gradient(135deg, #6a5acd, #3685fb);"';
+        } else if (type === 'beach') {
+          iconHtml = '<i class="ri-sun-fill"></i>';
+          bgClass = 'style="background: linear-gradient(135deg, #ffa502, #ff7f50);"';
+        } else if (type === 'nature') {
+          iconHtml = '<i class="ri-mountain-fill"></i>';
+          bgClass = 'style="background: linear-gradient(135deg, #2ed573, #1e90ff);"';
+        } else if (type === 'luxury') {
+          iconHtml = '<i class="ri-hotel-bed-fill"></i>';
+          bgClass = 'style="background: linear-gradient(135deg, #9b59b6, #e056fd);"';
+        }
+
+        return L.divIcon({
+          className: 'custom-map-leaflet-pin',
+          html: `<div class="map-pin-pulse-wrapper" ${bgClass}>${iconHtml}</div>`,
+          iconSize: [38, 38],
+          iconAnchor: [19, 38],
+          popupAnchor: [0, -38]
+        });
+      }
+
+      const listContainer = document.getElementById('mapDestList');
+      const countBadge = document.getElementById('sidebarCountBadge');
+
+      function renderPlaces(filterCat = 'all', searchQuery = '') {
+        markersGroup.clearLayers();
+        listContainer.innerHTML = '';
+
+        const filtered = mapDatabase.filter(item => {
+          const catMatches = filterCat === 'all' || item.type === filterCat;
+          const searchMatches = !searchQuery || 
+            item.name.toLowerCase().includes(searchQuery) ||
+            item.city.toLowerCase().includes(searchQuery) ||
+            item.country.toLowerCase().includes(searchQuery) ||
+            item.categoryName.toLowerCase().includes(searchQuery);
+          return catMatches && searchMatches;
+        });
+
+        if (countBadge) {
+          countBadge.textContent = `${filtered.length} Places`;
+        }
+
+        if (filtered.length === 0) {
+          listContainer.innerHTML = `
+            <div class="text-center py-4 px-2 text-muted">
+              <i class="ri-search-eye-line display-6 mb-2 d-block text-secondary"></i>
+              <p class="small mb-1">No local places found in this filter.</p>
+              <button class="btn btn-sm btn-outline-primary mt-2" id="btnGeocodeTry">Search entire world map</button>
+            </div>
+          `;
+          const btnGeo = document.getElementById('btnGeocodeTry');
+          if (btnGeo) {
+            btnGeo.addEventListener('click', () => {
+              executeGlobalGeocoding(searchQuery);
+            });
+          }
+          return;
+        }
+
+        filtered.forEach(place => {
+          const marker = L.marker(place.coords, {
+            icon: createCustomIcon(place.type)
+          }).addTo(markersGroup);
+
+          const popupHtml = `
+            <div>
+              <img src="${place.img}" class="popup-img" alt="${place.name}">
+              <div class="popup-body">
+                <span class="popup-badge">${place.badge} &bull; ${place.city}, ${place.country}</span>
+                <h6 class="popup-title">${place.name}</h6>
+                <p class="popup-desc">${place.desc}</p>
+                <div class="d-flex justify-content-between align-items-center border-top pt-2">
+                  <span class="popup-price">${place.price > 0 ? '$' + place.price : 'Free Entry'}</span>
+                  <a href="payment.html?dest=${encodeURIComponent(place.name)}&price=${place.price || 499}" class="btn btn-sm btn-accent-coral rounded-pill px-3">
+                    <i class="ri-flashlight-line me-1"></i>Book
+                  </a>
+                </div>
+              </div>
+            </div>
+          `;
+
+          marker.bindPopup(popupHtml);
+
+          const itemEl = document.createElement('div');
+          itemEl.className = 'map-dest-item';
+          itemEl.innerHTML = `
+            <img src="${place.img}" class="map-dest-thumb" alt="${place.name}">
+            <div style="flex-grow: 1; min-width: 0;">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <strong class="small text-truncate d-block" style="color: var(--text-dark);">${place.name}</strong>
+                <span class="small fw-bold text-primary">${place.price > 0 ? '$' + place.price : 'Free'}</span>
+              </div>
+              <div class="d-flex align-items-center justify-content-between">
+                <small class="text-muted text-truncate" style="font-size: 0.75rem;">${place.city}, ${place.country}</small>
+                <span class="small text-warning fw-bold"><i class="fa-solid fa-star"></i> ${place.rating}</span>
+              </div>
+            </div>
+          `;
+
+          itemEl.addEventListener('click', () => {
+            document.querySelectorAll('.map-dest-item').forEach(el => el.classList.remove('active'));
+            itemEl.classList.add('active');
+
+            map.flyTo(place.coords, 10, {
+              animate: true,
+              duration: 1.5
+            });
+
+            setTimeout(() => {
+              marker.openPopup();
+            }, 1500);
+          });
+
+          listContainer.appendChild(itemEl);
+        });
+      }
+
+      // Initial render
+      renderPlaces('all');
+
+      // Category Pill Click
+      const catPills = document.querySelectorAll('.sidebar-cat-pill');
+      catPills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          catPills.forEach(p => p.classList.remove('active'));
+          pill.classList.add('active');
+          currentActiveCat = pill.getAttribute('data-cat') || 'all';
+          const query = (document.getElementById('mapSearchInput').value || '').toLowerCase().trim();
+          renderPlaces(currentActiveCat, query);
+        });
+      });
+
+      // Search Handler
+      const searchInput = document.getElementById('mapSearchInput');
+      const searchBtn = document.getElementById('btnMapSearch');
+
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          const query = e.target.value.toLowerCase().trim();
+          renderPlaces(currentActiveCat, query);
+        });
+
+        searchInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            const query = searchInput.value.trim();
+            if (query) {
+              executeGlobalGeocoding(query);
+            }
+          }
+        });
+      }
+
+      if (searchBtn) {
+        searchBtn.addEventListener('click', () => {
+          const query = searchInput.value.trim();
+          if (query) {
+            executeGlobalGeocoding(query);
+          }
+        });
+      }
+
+      // Live World Geocoding via OpenStreetMap Nominatim
+      async function executeGlobalGeocoding(query) {
+        if (!query) return;
+
+        // Check if there is a match in mapDatabase first
+        const localMatch = mapDatabase.find(p => 
+          p.name.toLowerCase().includes(query.toLowerCase()) || 
+          p.city.toLowerCase().includes(query.toLowerCase()) ||
+          p.country.toLowerCase().includes(query.toLowerCase())
+        );
+
+        if (localMatch) {
+          map.flyTo(localMatch.coords, 11, { animate: true, duration: 1.6 });
+          renderPlaces(localMatch.type, '');
+          setTimeout(() => {
+            markersGroup.eachLayer(layer => {
+              const latLng = layer.getLatLng();
+              if (Math.abs(latLng.lat - localMatch.coords[0]) < 0.01 && Math.abs(latLng.lng - localMatch.coords[1]) < 0.01) {
+                layer.openPopup();
+              }
+            });
+          }, 1600);
+          return;
+        }
+
+        // Live OpenStreetMap Geocoding Fallback
+        try {
+          if (searchBtn) searchBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
+
+          const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&limit=1&q=${encodeURIComponent(query)}`);
+          const data = await res.json();
+
+          if (data && data.length > 0) {
+            const result = data[0];
+            const lat = parseFloat(result.lat);
+            const lon = parseFloat(result.lon);
+
+            if (searchResultMarker) {
+              map.removeLayer(searchResultMarker);
+            }
+
+            const searchIcon = L.divIcon({
+              className: 'custom-map-leaflet-pin',
+              html: `<div class="map-pin-pulse-wrapper" style="background: linear-gradient(135deg, #ff4757, #ff6b81);"><i class="ri-search-2-line"></i></div>`,
+              iconSize: [40, 40],
+              iconAnchor: [20, 40],
+              popupAnchor: [0, -40]
+            });
+
+            searchResultMarker = L.marker([lat, lon], { icon: searchIcon }).addTo(map);
+
+            const dynamicPopup = `
+              <div>
+                <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=600&q=80" class="popup-img" alt="${result.display_name}">
+                <div class="popup-body">
+                  <span class="popup-badge">Found on Global Map</span>
+                  <h6 class="popup-title">${result.name || query}</h6>
+                  <p class="popup-desc">${result.display_name}</p>
+                  <div class="d-flex justify-content-between align-items-center border-top pt-2">
+                    <span class="popup-price">$699 <small class="text-muted fw-normal" style="font-size:0.75rem;">est. package</small></span>
+                    <a href="payment.html?dest=${encodeURIComponent(result.name || query)}&price=699" class="btn btn-sm btn-accent-coral rounded-pill px-3">
+                      Book Trip
+                    </a>
+                  </div>
+                </div>
+              </div>
+            `;
+
+            searchResultMarker.bindPopup(dynamicPopup).openPopup();
+            map.flyTo([lat, lon], 12, { animate: true, duration: 1.8 });
+
+            // Also prepend to list
+            const foundItem = document.createElement('div');
+            foundItem.className = 'map-dest-item active';
+            foundItem.innerHTML = `
+              <div class="map-dest-thumb d-flex align-items-center justify-content-center bg-primary text-white rounded-3" style="width: 52px; height: 52px;">
+                <i class="ri-map-pin-fill fs-5"></i>
+              </div>
+              <div style="flex-grow: 1; min-width: 0;">
+                <strong class="small text-truncate d-block" style="color: var(--text-dark);">${result.name || query}</strong>
+                <small class="text-muted text-truncate d-block" style="font-size: 0.72rem;">${result.display_name}</small>
+              </div>
+            `;
+            listContainer.prepend(foundItem);
+          } else {
+            alert(`Could not find "${query}" on the map. Please try a different city, mall, or landmark name.`);
+          }
+        } catch (err) {
+          console.error("Geocoding error:", err);
+        } finally {
+          if (searchBtn) searchBtn.innerHTML = '<i class="ri-arrow-right-line"></i>';
+        }
+      }
+    });
+  </script>
+</body>
+</html>

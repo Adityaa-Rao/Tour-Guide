@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tour Packages - TourGuide</title>
+  <meta name="description" content="Explore all curated holiday packages by Travel Dost - Adventure, Honeymoon, Cultural, and Luxury experiences.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✈️</text></svg>">
+
+  <!-- Fonts & CDN CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@300;400;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Oxygen:wght@300;400;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Scroll Progress & Back to Top -->
+  <div id="progress-bar"></div>
+  <button class="goupbtn" id="goUpBtn" aria-label="Back to Top"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <!-- Navigation -->
+  <header class="header-wrapper sticky-top">
+    <nav class="newNav container-fluid px-lg-5" id="mainNav">
+      <div class="nav-container">
+        <a href="index.html" class="nav__brand">
+          <div class="brand-icon-wrap"><i class="fa-solid fa-earth-americas brand-globe"></i></div>
+          <span class="nav__logo">Tourguide<span>.</span></span>
+          <span class="brand-tag">Travel Dost</span>
+        </a>
+
+        <div class="nav__menu-wrapper" id="navMenu">
+          <ul class="nav__list">
+            <li class="nav__item"><a href="index.html" class="nav__link"><i class="ri-home-4-line me-1"></i>Home</a></li>
+            <li class="nav__item"><a href="about.html" class="nav__link"><i class="ri-information-line me-1"></i>About</a></li>
+            <li class="nav__item dropdown">
+              <a class="nav__link dropdown-toggle" href="#" id="servicesDrop" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="ri-service-line me-1"></i>Services
+              </a>
+              <ul class="dropdown-menu modern-dropdown" aria-labelledby="servicesDrop">
+                <li><a class="dropdown-item" href="index.html#Destinations"><i class="ri-map-pin-line me-2 text-primary"></i>Destinations</a></li>
+                <li><a class="dropdown-item" href="index.html#trip"><i class="ri-price-tag-3-line me-2 text-primary"></i>Prices & Packages</a></li>
+                <li><a class="dropdown-item" href="index.html#ReviewGallery"><i class="ri-gallery-line me-2 text-primary"></i>Trip Gallery</a></li>
+                <li><a class="dropdown-item" href="index.html#tourist"><i class="ri-user-star-line me-2 text-primary"></i>Tourist Guides</a></li>
+                <li><a class="dropdown-item" href="index.html#hotel"><i class="ri-hotel-line me-2 text-primary"></i>Hotel & Resort</a></li>
+              </ul>
+            </li>
+            <li class="nav__item"><a href="topdeals/topdeals.html" class="nav__link"><i class="ri-fire-line me-1 text-danger"></i>Top Deals</a></li>
+            <li class="nav__item"><a href="packages.html" class="nav__link active"><i class="ri-suitcase-line me-1"></i>Packages</a></li>
+            <li class="nav__item"><a href="index.html#testimonial" class="nav__link"><i class="ri-chat-smile-2-line me-1"></i>Testimonial</a></li>
+            <li class="nav__item"><a href="feedback.html" class="nav__link"><i class="ri-star-smile-line me-1"></i>Rate Us?</a></li>
+            <li class="nav__item"><a href="index.html#cnt-form" class="nav__link"><i class="ri-mail-send-line me-1"></i>Contact Us</a></li>
+          </ul>
+
+          <div class="nav-drawer-actions d-lg-none mt-4">
+            <a href="mapa.html" class="btn btn-outline-primary w-100 mb-2"><i class="ri-map-2-line me-2"></i>View Map</a>
+            <a href="newLogin.html" class="btn btn-primary w-100"><i class="ri-user-line me-2"></i>Login / Sign Up</a>
+          </div>
+        </div>
+
+        <div class="nav__actions d-flex align-items-center gap-2">
+          <a href="mapa.html" class="btn btn-sm btn-outline-nav d-none d-md-inline-flex align-items-center"><i class="ri-map-2-line me-1"></i>View Map</a>
+          <a href="newLogin.html" id="navAuthBtn" class="btn btn-sm btn-primary-nav d-none d-sm-inline-flex align-items-center"><i class="ri-user-line me-1"></i><span id="navAuthText">Log In</span></a>
+          <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Theme"><i class="ri-moon-line moon-icon"></i><i class="ri-sun-line sun-icon"></i></button>
+          <button class="nav__hamburger d-lg-none" id="navMenuBtn" aria-label="Toggle Menu"><span></span><span></span><span></span></button>
+        </div>
+      </div>
+    </nav>
+    <div class="mobile-nav-backdrop" id="navBackdrop"></div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-hero text-center">
+    <div class="container" data-aos="fade-up">
+      <div class="section-badge mb-2"><i class="ri-suitcase-3-line me-1"></i> Tailored Itineraries</div>
+      <h1 class="hero-title">Exclusive Travel Packages</h1>
+      <p class="section-subtitle max-w-700 mx-auto">
+        Discover handcrafted vacation plans designed by local connoisseurs. Filter by experience, compare inclusions, and reserve your dream expedition in minutes.
+      </p>
+    </div>
+  </section>
+
+  <!-- Filter & Packages Catalog Section -->
+  <section class="py-5">
+    <div class="container">
+      
+      <!-- Filter Bar -->
+      <div class="destination-filter-wrapper mb-5" data-aos="fade-up">
+        <div class="filter-controls-row">
+          
+          <div class="destination-search-box">
+            <i class="ri-search-line search-icon"></i>
+            <input type="text" id="pkgSearchInput" class="form-control filter-search-input" placeholder="Search by package name or country...">
+          </div>
+
+          <div class="filter-pills-list">
+            <button class="filter-pill active" data-pkg-filter="all">All Packages</button>
+            <button class="filter-pill" data-pkg-filter="adventure">Adventure</button>
+            <button class="filter-pill" data-pkg-filter="honeymoon">Honeymoon</button>
+            <button class="filter-pill" data-pkg-filter="cultural">Cultural</button>
+            <button class="filter-pill" data-pkg-filter="luxury">Luxury</button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Packages Grid -->
+      <div class="row g-4" id="packagesGrid">
+        
+        <!-- Package 1: Swiss Alps High Trek -->
+        <div class="col-lg-4 col-md-6 pkg-card-item" data-category="adventure" data-name="swiss alps high trek switzerland mountain" data-aos="fade-up">
+          <div class="dest-card">
+            <div class="dest-card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?auto=format&fit=crop&w=700&q=80" alt="Swiss Alps High Trek" class="dest-img">
+              <span class="dest-category-badge">Adventure</span>
+              <div class="dest-rating-pill"><i class="fa-solid fa-star"></i> 4.9 <small>(320)</small></div>
+            </div>
+            <div class="dest-card-body">
+              <div class="dest-meta">
+                <span class="dest-location"><i class="ri-map-pin-2-fill text-danger me-1"></i>Zermatt & Interlaken, Switzerland</span>
+                <span class="dest-duration"><i class="ri-time-line me-1"></i>6 Days / 5 Nights</span>
+              </div>
+              <h3 class="dest-title">Matterhorn Glacier Summit & Glacier Express</h3>
+              <p class="dest-desc">Glacier hikes, alpine cabin fondue nights, mountain biking, and panoramic Swiss rail passes.</p>
+              <div class="dest-footer">
+                <div class="dest-price-box">
+                  <span class="price-from">Per Traveler</span>
+                  <span class="price-val">$799</span>
+                </div>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-sm btn-outline-primary view-pkg-modal" 
+                    data-title="Matterhorn Glacier Summit" 
+                    data-img="https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?auto=format&fit=crop&w=700&q=80"
+                    data-days="6 Days / 5 Nights"
+                    data-price="799"
+                    data-desc="Traverse the highest peaks in Europe with UIAGM certified mountain guides. Stay in authentic alpine chalets, taste Swiss chocolate workshops, and glide over glaciers on the Glacier Express."
+                    data-inclusions="Certified Mountain Guide, Swiss Rail Pass, Chalet Accommodation, Daily Alpine Breakfast, Gear Rental"
+                    data-exclusions="International Flights, Personal Porter">Details</button>
+                  <a href="payment.html?pkg=Matterhorn&price=799" class="btn btn-sm btn-accent-coral">Book Now</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Package 2: Bali Romantic Honeymoon -->
+        <div class="col-lg-4 col-md-6 pkg-card-item" data-category="honeymoon" data-name="bali romantic honeymoon indonesia private villa" data-aos="fade-up" data-aos-delay="100">
+          <div class="dest-card">
+            <div class="dest-card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=700&q=80" alt="Bali Romantic Honeymoon" class="dest-img">
+              <span class="dest-category-badge">Honeymoon</span>
+              <div class="dest-rating-pill"><i class="fa-solid fa-star"></i> 5.0 <small>(510)</small></div>
+            </div>
+            <div class="dest-card-body">
+              <div class="dest-meta">
+                <span class="dest-location"><i class="ri-map-pin-2-fill text-danger me-1"></i>Ubud & Seminyak, Indonesia</span>
+                <span class="dest-duration"><i class="ri-time-line me-1"></i>7 Days / 6 Nights</span>
+              </div>
+              <h3 class="dest-title">Enchanted Bali Honeymoon & Forest Pool Villa</h3>
+              <p class="dest-desc">Private floating breakfasts, flower bath wellness spas, Jimbaran Bay candlelit seafood dinner.</p>
+              <div class="dest-footer">
+                <div class="dest-price-box">
+                  <span class="price-from">Per Couple</span>
+                  <span class="price-val">$1,299</span>
+                </div>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-sm btn-outline-primary view-pkg-modal"
+                    data-title="Enchanted Bali Honeymoon"
+                    data-img="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=700&q=80"
+                    data-days="7 Days / 6 Nights"
+                    data-price="1299"
+                    data-desc="Crafted for ultimate couples intimacy. Enjoy an infinity pool forest villa in Ubud followed by beachfront sunset cocktails in Seminyak, couples massages, and sunset catamaran cruises."
+                    data-inclusions="5★ Private Pool Villa, Couples Spa & Floating Breakfast, Airport Chauffeur, Candlelight Dinner"
+                    data-exclusions="Lunch & Personal Drinks, Travel Visas">Details</button>
+                  <a href="payment.html?pkg=BaliHoneymoon&price=1299" class="btn btn-sm btn-accent-coral">Book Now</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Package 3: Kyoto & Tokyo Cultural Heritage -->
+        <div class="col-lg-4 col-md-6 pkg-card-item" data-category="cultural" data-name="kyoto tokyo cultural heritage japan shrines tea ceremony" data-aos="fade-up" data-aos-delay="200">
+          <div class="dest-card">
+            <div class="dest-card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=700&q=80" alt="Kyoto & Tokyo Heritage" class="dest-img">
+              <span class="dest-category-badge">Cultural</span>
+              <div class="dest-rating-pill"><i class="fa-solid fa-star"></i> 4.95 <small>(440)</small></div>
+            </div>
+            <div class="dest-card-body">
+              <div class="dest-meta">
+                <span class="dest-location"><i class="ri-map-pin-2-fill text-danger me-1"></i>Tokyo, Kyoto & Nara, Japan</span>
+                <span class="dest-duration"><i class="ri-time-line me-1"></i>8 Days / 7 Nights</span>
+              </div>
+              <h3 class="dest-title">Imperial Shrines, Tea Ceremonies & Shinkansen</h3>
+              <p class="dest-desc">Walk the Fushimi Inari torii gates, participate in traditional matcha ceremonies, and ride bullet trains.</p>
+              <div class="dest-footer">
+                <div class="dest-price-box">
+                  <span class="price-from">Per Traveler</span>
+                  <span class="price-val">$1,150</span>
+                </div>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-sm btn-outline-primary view-pkg-modal"
+                    data-title="Imperial Japan Cultural Odyssey"
+                    data-img="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=700&q=80"
+                    data-days="8 Days / 7 Nights"
+                    data-price="1150"
+                    data-desc="Deep dive into Japan's thousand-year traditions. Includes Shinkansen bullet train pass, tea masterclasses with geishas, Ryokan hot springs with Kaiseki dinners, and licensed bilingual guides."
+                    data-inclusions="JR Bullet Train Pass, 4-Star Ryokan & City Hotels, Kaiseki Dinner, Master Tea Ceremony Passes"
+                    data-exclusions="Single Room Supplement, Gratuities">Details</button>
+                  <a href="payment.html?pkg=JapanHeritage&price=1150" class="btn btn-sm btn-accent-coral">Book Now</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Package 4: Royal Dubai & Desert Mirage -->
+        <div class="col-lg-4 col-md-6 pkg-card-item" data-category="luxury" data-name="royal dubai desert luxury uae burj khalifa" data-aos="fade-up">
+          <div class="dest-card">
+            <div class="dest-card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=700&q=80" alt="Royal Dubai" class="dest-img">
+              <span class="dest-category-badge">Luxury</span>
+              <div class="dest-rating-pill"><i class="fa-solid fa-star"></i> 5.0 <small>(620)</small></div>
+            </div>
+            <div class="dest-card-body">
+              <div class="dest-meta">
+                <span class="dest-location"><i class="ri-map-pin-2-fill text-danger me-1"></i>Dubai & Abu Dhabi, UAE</span>
+                <span class="dest-duration"><i class="ri-time-line me-1"></i>6 Days / 5 Nights</span>
+              </div>
+              <h3 class="dest-title">VIP Burj Al Arab, Helicopter Tour & Dune Glamping</h3>
+              <p class="dest-desc">Helicopter skyline flyover, private luxury yacht cruise, and 5-star royal desert glamping under stars.</p>
+              <div class="dest-footer">
+                <div class="dest-price-box">
+                  <span class="price-from">Per Traveler</span>
+                  <span class="price-val">$2,450</span>
+                </div>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-sm btn-outline-primary view-pkg-modal"
+                    data-title="Royal Dubai Luxury Sovereign"
+                    data-img="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=700&q=80"
+                    data-days="6 Days / 5 Nights"
+                    data-price="2450"
+                    data-desc="The epitome of middle eastern hospitality. Stay in Burj Al Arab Jumeirah, fly by private chopper above The Palm, and enjoy bespoke dining at Michelin starred venues."
+                    data-inclusions="7-Star Hotel Suite, Private Helicopter Tour, Chauffeur Rolls-Royce, Desert Bedouin Feast"
+                    data-exclusions="Personal Shopping, Custom Aircraft Add-ons">Details</button>
+                  <a href="payment.html?pkg=RoyalDubai&price=2450" class="btn btn-sm btn-accent-coral">Book Now</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Package 5: Amalfi Coast & Tuscany Wine Trail -->
+        <div class="col-lg-4 col-md-6 pkg-card-item" data-category="cultural honeymoon" data-name="amalfi coast tuscany wine italy romance europe" data-aos="fade-up" data-aos-delay="100">
+          <div class="dest-card">
+            <div class="dest-card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=700&q=80" alt="Amalfi & Tuscany" class="dest-img">
+              <span class="dest-category-badge">Cultural / Honeymoon</span>
+              <div class="dest-rating-pill"><i class="fa-solid fa-star"></i> 4.9 <small>(380)</small></div>
+            </div>
+            <div class="dest-card-body">
+              <div class="dest-meta">
+                <span class="dest-location"><i class="ri-map-pin-2-fill text-danger me-1"></i>Positano, Capri & Tuscany, Italy</span>
+                <span class="dest-duration"><i class="ri-time-line me-1"></i>8 Days / 7 Nights</span>
+              </div>
+              <h3 class="dest-title">Italian Riviera Dolce Vita & Chianti Vineyards</h3>
+              <p class="dest-desc">Private vintage Riva boat cruise around Capri, pasta masterclass, and Chianti vineyard cellar tastings.</p>
+              <div class="dest-footer">
+                <div class="dest-price-box">
+                  <span class="price-from">Per Traveler</span>
+                  <span class="price-val">$1,680</span>
+                </div>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-sm btn-outline-primary view-pkg-modal"
+                    data-title="Italian Riviera Dolce Vita"
+                    data-img="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=700&q=80"
+                    data-days="8 Days / 7 Nights"
+                    data-price="1680"
+                    data-desc="Live la dolce vita in picturesque Positano and Tuscan rolling hills. Indulge in private sommelier tastings, Vespa coast runs, and fresh seafood by the blue waters of Capri."
+                    data-inclusions="Boutique Cliffside Hotels, Capri Private Boat, Vineyard Tours & Lunches, Vespa Rental"
+                    data-exclusions="City Tourism Taxes, Optional Flight Transfers">Details</button>
+                  <a href="payment.html?pkg=AmalfiTuscany&price=1680" class="btn btn-sm btn-accent-coral">Book Now</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Package 6: African Serengeti Big 5 Safari -->
+        <div class="col-lg-4 col-md-6 pkg-card-item" data-category="adventure luxury" data-name="african serengeti big 5 safari tanzania wildlife" data-aos="fade-up" data-aos-delay="200">
+          <div class="dest-card">
+            <div class="dest-card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=700&q=80" alt="Serengeti Safari" class="dest-img">
+              <span class="dest-category-badge">Adventure / Luxury</span>
+              <div class="dest-rating-pill"><i class="fa-solid fa-star"></i> 5.0 <small>(730)</small></div>
+            </div>
+            <div class="dest-card-body">
+              <div class="dest-meta">
+                <span class="dest-location"><i class="ri-map-pin-2-fill text-danger me-1"></i>Serengeti & Ngorongoro, Tanzania</span>
+                <span class="dest-duration"><i class="ri-time-line me-1"></i>7 Days / 6 Nights</span>
+              </div>
+              <h3 class="dest-title">Great Migration Hot-Air Balloon Safari & Luxury Tents</h3>
+              <p class="dest-desc">Witness lion prides and the Great Migration, sunrise hot-air balloon flights, and luxury glamping.</p>
+              <div class="dest-footer">
+                <div class="dest-price-box">
+                  <span class="price-from">Per Traveler</span>
+                  <span class="price-val">$2,100</span>
+                </div>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-sm btn-outline-primary view-pkg-modal"
+                    data-title="Serengeti Great Migration Safari"
+                    data-img="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=700&q=80"
+                    data-days="7 Days / 6 Nights"
+                    data-price="2100"
+                    data-desc="An iconic bucket-list adventure across the legendary Serengeti grasslands and Ngorongoro Crater. Led by top certified naturalist rangers in custom 4x4 open-roof safari land cruisers."
+                    data-inclusions="National Park Fees, All Meals & Bush Dinners, Sunrise Hot Air Balloon Flight, Luxury Lodge Tent"
+                    data-exclusions="Tanzania Entry Visa, International Vaccinations">Details</button>
+                  <a href="payment.html?pkg=SerengetiSafari&price=2100" class="btn btn-sm btn-accent-coral">Book Now</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Package Details Modal -->
+  <div class="modal fade" id="packageDetailModal" tabindex="-1" aria-labelledby="pkgModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content" style="background-color: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px;">
+        <div class="modal-header border-0 pb-0">
+          <h4 class="modal-title fw-bold" id="pkgModalTitle" style="color: var(--text-dark);">Package Overview</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <div class="row g-4">
+            <div class="col-md-5">
+              <img id="pkgModalImg" src="" alt="Package Details" class="img-fluid rounded-4 shadow" style="height: 240px; width: 100%; object-fit: cover;">
+              <div class="mt-3 p-3 rounded-3" style="background: var(--primary-light);">
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="small fw-semibold text-muted">Trip Duration:</span>
+                  <span class="fw-bold" id="pkgModalDays"></span>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mt-2">
+                  <span class="small fw-semibold text-muted">Package Price:</span>
+                  <span class="fw-bold fs-5 text-primary" id="pkgModalPrice"></span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-7">
+              <h5 class="fw-bold mb-2" style="color: var(--text-dark);">Expedition Highlights</h5>
+              <p id="pkgModalDesc" class="text-muted small mb-3"></p>
+              
+              <h6 class="fw-bold text-success mb-2"><i class="ri-check-double-line me-1"></i> What's Included:</h6>
+              <p id="pkgModalInclusions" class="small text-muted mb-3"></p>
+
+              <h6 class="fw-bold text-danger mb-2"><i class="ri-close-circle-line me-1"></i> Excluded:</h6>
+              <p id="pkgModalExclusions" class="small text-muted"></p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer border-0 pt-0">
+          <button type="button" class="btn btn-secondary px-4 rounded-pill" data-bs-dismiss="modal">Close</button>
+          <a href="#" id="pkgModalBookBtn" class="btn btn-accent-coral px-4 rounded-pill">Proceed to Book</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container py-5">
+      <div class="row g-4 justify-content-between">
+        <div class="col-lg-4">
+          <a href="index.html" class="nav__brand mb-3 d-inline-flex">
+            <div class="brand-icon-wrap"><i class="fa-solid fa-earth-americas brand-globe"></i></div>
+            <span class="nav__logo">Tourguide<span>.</span></span>
+            <span class="brand-tag">Travel Dost</span>
+          </a>
+          <p class="footer-story text-muted">Travel Dost crafts world-class journeys with licensed native guides, handpicked luxury suites, and 24/7 client care.</p>
+        </div>
+        <div class="col-lg-2 col-6">
+          <h4 class="footer-col-title">Quick Links</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html"><i class="ri-arrow-right-s-line"></i> Home</a></li>
+            <li><a href="about.html"><i class="ri-arrow-right-s-line"></i> About Us</a></li>
+            <li><a href="packages.html"><i class="ri-arrow-right-s-line"></i> Packages</a></li>
+            <li><a href="topdeals/topdeals.html"><i class="ri-arrow-right-s-line"></i> Top Deals</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-6">
+          <h4 class="footer-col-title">Support & Legal</h4>
+          <ul class="footer-links-list">
+            <li><a href="privacy.html"><i class="ri-shield-keyhole-line"></i> Privacy Policy</a></li>
+            <li><a href="tnc.html"><i class="ri-file-text-line"></i> Terms & Conditions</a></li>
+            <li><a href="feedback.html"><i class="ri-star-smile-line"></i> Customer Feedback</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3">
+          <h4 class="footer-col-title">Assistance</h4>
+          <p class="small text-muted mb-2"><i class="ri-phone-line text-primary me-1"></i> +1 (800) 555-TRAV</p>
+          <p class="small text-muted mb-0"><i class="ri-mail-line text-primary me-1"></i> support@traveldost.com</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="Theme.js"></script>
+  <script src="navbarToggle.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof AOS !== 'undefined') AOS.init({ duration: 800, once: true });
+
+      // Package Filter Logic
+      const filterPills = document.querySelectorAll('[data-pkg-filter]');
+      const pkgCards = document.querySelectorAll('.pkg-card-item');
+      const searchInput = document.getElementById('pkgSearchInput');
+
+      let activeCategory = 'all';
+      let searchTerm = '';
+
+      function filterPackages() {
+        pkgCards.forEach(card => {
+          const category = card.getAttribute('data-category') || '';
+          const name = card.getAttribute('data-name') || '';
+          const matchCat = activeCategory === 'all' || category.includes(activeCategory);
+          const matchSearch = !searchTerm || name.includes(searchTerm);
+
+          if (matchCat && matchSearch) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      }
+
+      filterPills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          filterPills.forEach(p => p.classList.remove('active'));
+          pill.classList.add('active');
+          activeCategory = pill.getAttribute('data-pkg-filter');
+          filterPackages();
+        });
+      });
+
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          searchTerm = e.target.value.toLowerCase().trim();
+          filterPackages();
+        });
+      }
+
+      // Modal Handler
+      const detailBtns = document.querySelectorAll('.view-pkg-modal');
+      const pkgModal = new bootstrap.Modal(document.getElementById('packageDetailModal'));
+
+      detailBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.getElementById('pkgModalTitle').textContent = btn.dataset.title;
+          document.getElementById('pkgModalImg').src = btn.dataset.img;
+          document.getElementById('pkgModalDays').textContent = btn.dataset.days;
+          document.getElementById('pkgModalPrice').textContent = `$${btn.dataset.price} / person`;
+          document.getElementById('pkgModalDesc').textContent = btn.dataset.desc;
+          document.getElementById('pkgModalInclusions').textContent = btn.dataset.inclusions;
+          document.getElementById('pkgModalExclusions').textContent = btn.dataset.exclusions;
+          document.getElementById('pkgModalBookBtn').href = `payment.html?pkg=${encodeURIComponent(btn.dataset.title)}&price=${btn.dataset.price}`;
+          pkgModal.show();
+        });
+      });
+    });
+  </script>
+</body>
+</html>

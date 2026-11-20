@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plan a Custom Trip - Tour Guide</title>
+  <meta name="description" content="Custom trip itinerary builder. Choose your destination, travel dates, guests, budget, and activities for an unforgettable bespoke journey.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✈️</text></svg>">
+
+  <!-- Fonts & CDN CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@300;400;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Oxygen:wght@300;400;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Scroll Progress & Back to Top -->
+  <div id="progress-bar"></div>
+  <button class="goupbtn" id="goUpBtn" aria-label="Back to Top"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <!-- Navigation -->
+  <header class="header-wrapper sticky-top">
+    <nav class="newNav container-fluid px-lg-5" id="mainNav">
+      <div class="nav-container">
+        <a href="index.html" class="nav__brand">
+          <div class="brand-icon-wrap"><i class="fa-solid fa-earth-americas brand-globe"></i></div>
+          <span class="nav__logo">Tourguide<span>.</span></span>
+          <span class="brand-tag">Travel Dost</span>
+        </a>
+
+        <div class="nav__menu-wrapper" id="navMenu">
+          <ul class="nav__list">
+            <li class="nav__item"><a href="index.html" class="nav__link"><i class="ri-home-4-line me-1"></i>Home</a></li>
+            <li class="nav__item"><a href="about.html" class="nav__link"><i class="ri-information-line me-1"></i>About</a></li>
+            <li class="nav__item dropdown">
+              <a class="nav__link dropdown-toggle" href="#" id="servicesDrop" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="ri-service-line me-1"></i>Services
+              </a>
+              <ul class="dropdown-menu modern-dropdown" aria-labelledby="servicesDrop">
+                <li><a class="dropdown-item" href="index.html#Destinations"><i class="ri-map-pin-line me-2 text-primary"></i>Destinations</a></li>
+                <li><a class="dropdown-item" href="index.html#trip"><i class="ri-price-tag-3-line me-2 text-primary"></i>Prices & Packages</a></li>
+                <li><a class="dropdown-item" href="index.html#ReviewGallery"><i class="ri-gallery-line me-2 text-primary"></i>Trip Gallery</a></li>
+                <li><a class="dropdown-item" href="index.html#tourist"><i class="ri-user-star-line me-2 text-primary"></i>Tourist Guides</a></li>
+                <li><a class="dropdown-item" href="index.html#hotel"><i class="ri-hotel-line me-2 text-primary"></i>Hotel & Resort</a></li>
+              </ul>
+            </li>
+            <li class="nav__item"><a href="topdeals/topdeals.html" class="nav__link"><i class="ri-fire-line me-1 text-danger"></i>Top Deals</a></li>
+            <li class="nav__item"><a href="packages.html" class="nav__link"><i class="ri-suitcase-line me-1"></i>Packages</a></li>
+            <li class="nav__item"><a href="feedback.html" class="nav__link"><i class="ri-star-smile-line me-1"></i>Rate Us?</a></li>
+            <li class="nav__item"><a href="index.html#cnt-form" class="nav__link"><i class="ri-mail-send-line me-1"></i>Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="nav__actions d-flex align-items-center gap-2">
+          <a href="mapa.html" class="btn btn-sm btn-outline-nav d-none d-md-inline-flex align-items-center"><i class="ri-map-2-line me-1"></i>View Map</a>
+          <a href="newLogin.html" id="navAuthBtn" class="btn btn-sm btn-primary-nav d-none d-sm-inline-flex align-items-center"><i class="ri-user-line me-1"></i><span id="navAuthText">Log In</span></a>
+          <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Theme"><i class="ri-moon-line moon-icon"></i><i class="ri-sun-line sun-icon"></i></button>
+          <button class="nav__hamburger d-lg-none" id="navMenuBtn" aria-label="Toggle Menu"><span></span><span></span><span></span></button>
+        </div>
+      </div>
+    </nav>
+    <div class="mobile-nav-backdrop" id="navBackdrop"></div>
+  </header>
+
+  <!-- Hero Header -->
+  <section class="page-hero text-center">
+    <div class="container" data-aos="fade-up">
+      <div class="section-badge mb-2"><i class="ri-compass-3-line me-1"></i> Interactive Itinerary Builder</div>
+      <h1 class="hero-title">Design Your Custom Journey</h1>
+      <p class="section-subtitle max-w-700 mx-auto">
+        Customize every detail: pick your world destination, travel window, travel party, preferred budget tier, and handpicked activities.
+      </p>
+    </div>
+  </section>
+
+  <!-- Interactive Planner Form -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row g-5">
+        
+        <!-- Form Builder Column -->
+        <div class="col-lg-8" data-aos="fade-right">
+          <div class="interactive-form-box">
+            
+            <form id="tripPlannerForm">
+              
+              <!-- Step 1: Destination Selection -->
+              <div class="planner-step-group mb-5">
+                <div class="d-flex align-items-center gap-3 mb-3">
+                  <span class="badge rounded-circle p-2 bg-primary text-white fs-6">1</span>
+                  <h4 class="mb-0 fw-bold" style="color: var(--text-dark);">Choose Your Destination</h4>
+                </div>
+                <div class="row g-3" id="destRadioGroup">
+                  
+                  <div class="col-md-4 col-6">
+                    <label class="destination-select-card active">
+                      <input type="radio" name="planDestination" value="Paris, France" data-base="180" checked>
+                      <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=300&q=80" alt="Paris">
+                      <div class="card-caption">
+                        <strong>Paris</strong>
+                        <small>France</small>
+                      </div>
+                    </label>
+                  </div>
+
+                  <div class="col-md-4 col-6">
+                    <label class="destination-select-card">
+                      <input type="radio" name="planDestination" value="Santorini, Greece" data-base="220">
+                      <img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=300&q=80" alt="Santorini">
+                      <div class="card-caption">
+                        <strong>Santorini</strong>
+                        <small>Greece</small>
+                      </div>
+                    </label>
+                  </div>
+
+                  <div class="col-md-4 col-6">
+                    <label class="destination-select-card">
+                      <input type="radio" name="planDestination" value="Bali, Indonesia" data-base="110">
+                      <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=300&q=80" alt="Bali">
+                      <div class="card-caption">
+                        <strong>Bali</strong>
+                        <small>Indonesia</small>
+                      </div>
+                    </label>
+                  </div>
+
+                  <div class="col-md-4 col-6">
+                    <label class="destination-select-card">
+                      <input type="radio" name="planDestination" value="Tokyo, Japan" data-base="200">
+                      <img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=300&q=80" alt="Tokyo">
+                      <div class="card-caption">
+                        <strong>Tokyo</strong>
+                        <small>Japan</small>
+                      </div>
+                    </label>
+                  </div>
+
+                  <div class="col-md-4 col-6">
+                    <label class="destination-select-card">
+                      <input type="radio" name="planDestination" value="Swiss Alps, Switzerland" data-base="240">
+                      <img src="https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?auto=format&fit=crop&w=300&q=80" alt="Swiss Alps">
+                      <div class="card-caption">
+                        <strong>Swiss Alps</strong>
+                        <small>Switzerland</small>
+                      </div>
+                    </label>
+                  </div>
+
+                  <div class="col-md-4 col-6">
+                    <label class="destination-select-card">
+                      <input type="radio" name="planDestination" value="Dubai, UAE" data-base="190">
+                      <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=300&q=80" alt="Dubai">
+                      <div class="card-caption">
+                        <strong>Dubai</strong>
+                        <small>UAE</small>
+                      </div>
+                    </label>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Step 2: Travel Dates & Guests Count -->
+              <div class="planner-step-group mb-5">
+                <div class="d-flex align-items-center gap-3 mb-3">
+                  <span class="badge rounded-circle p-2 bg-primary text-white fs-6">2</span>
+                  <h4 class="mb-0 fw-bold" style="color: var(--text-dark);">Travel Schedule & Guests</h4>
+                </div>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label fw-semibold small text-muted">Departure Date</label>
+                    <input type="date" id="planStartDate" class="form-control py-2" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label fw-semibold small text-muted">Return Date</label>
+                    <input type="date" id="planEndDate" class="form-control py-2" required>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label fw-semibold small text-muted">Adults (18+ yrs)</label>
+                    <div class="input-group">
+                      <button class="btn btn-outline-secondary" type="button" id="btnAdultMinus">-</button>
+                      <input type="number" id="planAdults" class="form-control text-center" value="2" min="1" max="10" readonly>
+                      <button class="btn btn-outline-secondary" type="button" id="btnAdultPlus">+</button>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label fw-semibold small text-muted">Children (0-17 yrs)</label>
+                    <div class="input-group">
+                      <button class="btn btn-outline-secondary" type="button" id="btnChildMinus">-</button>
+                      <input type="number" id="planChildren" class="form-control text-center" value="0" min="0" max="6" readonly>
+                      <button class="btn btn-outline-secondary" type="button" id="btnChildPlus">+</button>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label fw-semibold small text-muted">Room Preference</label>
+                    <select class="form-select py-2" id="planRoomType">
+                      <option value="1.0">Standard Deluxe Room</option>
+                      <option value="1.3">Ocean / Mountain View Suite (+30%)</option>
+                      <option value="1.8">Private Luxury Pool Villa (+80%)</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 3: Budget Selector -->
+              <div class="planner-step-group mb-5">
+                <div class="d-flex align-items-center gap-3 mb-3">
+                  <span class="badge rounded-circle p-2 bg-primary text-white fs-6">3</span>
+                  <h4 class="mb-0 fw-bold" style="color: var(--text-dark);">Choose Your Travel Style</h4>
+                </div>
+                <div class="row g-3">
+                  
+                  <div class="col-md-4">
+                    <label class="budget-card-label active">
+                      <input type="radio" name="planBudgetTier" value="Explorer" data-multiplier="1.0" checked>
+                      <div class="b-icon"><i class="ri-compass-line"></i></div>
+                      <h6>Explorer Tier</h6>
+                      <small>Standard 3★-4★ hotels, group guided walks, local rail.</small>
+                    </label>
+                  </div>
+
+                  <div class="col-md-4">
+                    <label class="budget-card-label">
+                      <input type="radio" name="planBudgetTier" value="Premium" data-multiplier="1.45">
+                      <div class="b-icon"><i class="ri-star-smile-line"></i></div>
+                      <h6>Comfort Plus</h6>
+                      <small>4★-5★ Boutique stays, fast-track museum entries, private transfers.</small>
+                    </label>
+                  </div>
+
+                  <div class="col-md-4">
+                    <label class="budget-card-label">
+                      <input type="radio" name="planBudgetTier" value="Luxury" data-multiplier="2.1">
+                      <div class="b-icon"><i class="ri-vip-crown-line"></i></div>
+                      <h6>Royal Luxury</h6>
+                      <small>5★ Palace suites, dedicated private chauffeur & personal concierge.</small>
+                    </label>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Step 4: Activities Checkboxes -->
+              <div class="planner-step-group mb-4">
+                <div class="d-flex align-items-center gap-3 mb-3">
+                  <span class="badge rounded-circle p-2 bg-primary text-white fs-6">4</span>
+                  <h4 class="mb-0 fw-bold" style="color: var(--text-dark);">Select Bespoke Experiences</h4>
+                </div>
+                <div class="row g-3">
+                  
+                  <div class="col-md-6">
+                    <label class="activity-checkbox-item">
+                      <input type="checkbox" class="activity-chk" value="Certified Native Guide" data-cost="150" checked>
+                      <span class="chk-box"></span>
+                      <div>
+                        <strong>Dedicated Multilingual Guide</strong>
+                        <p class="mb-0 small text-muted">Private historic tour & hidden gem routing (+$150)</p>
+                      </div>
+                    </label>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="activity-checkbox-item">
+                      <input type="checkbox" class="activity-chk" value="Spa & Hot Springs" data-cost="120">
+                      <span class="chk-box"></span>
+                      <div>
+                        <strong>Spa & Thermal Wellness Session</strong>
+                        <p class="mb-0 small text-muted">Couples massage & mineral water treatments (+$120)</p>
+                      </div>
+                    </label>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="activity-checkbox-item">
+                      <input type="checkbox" class="activity-chk" value="Adventure Excursion" data-cost="190">
+                      <span class="chk-box"></span>
+                      <div>
+                        <strong>Outdoor Adventure & Trek</strong>
+                        <p class="mb-0 small text-muted">Mountain biking, rafting or glacier walking (+$190)</p>
+                      </div>
+                    </label>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="activity-checkbox-item">
+                      <input type="checkbox" class="activity-chk" value="Fine Dining Experience" data-cost="180">
+                      <span class="chk-box"></span>
+                      <div>
+                        <strong>Michelin-Star / Tasting Menu</strong>
+                        <p class="mb-0 small text-muted">Chef's tasting menu with paired local wines (+$180)</p>
+                      </div>
+                    </label>
+                  </div>
+
+                </div>
+              </div>
+
+            </form>
+
+          </div>
+        </div>
+
+        <!-- Live Summary Sticky Card -->
+        <div class="col-lg-4" data-aos="fade-left">
+          <div class="interactive-form-box sticky-top" style="top: 100px;">
+            <h4 class="fw-bold mb-3" style="color: var(--text-dark);"><i class="ri-file-list-3-line text-primary me-2"></i>Trip Summary</h4>
+            
+            <div class="summary-line d-flex justify-content-between py-2 border-bottom">
+              <span class="text-muted small">Destination:</span>
+              <strong id="sumDest">Paris, France</strong>
+            </div>
+
+            <div class="summary-line d-flex justify-content-between py-2 border-bottom">
+              <span class="text-muted small">Duration:</span>
+              <strong id="sumDays">5 Days / 4 Nights</strong>
+            </div>
+
+            <div class="summary-line d-flex justify-content-between py-2 border-bottom">
+              <span class="text-muted small">Travelers:</span>
+              <strong id="sumGuests">2 Adults, 0 Children</strong>
+            </div>
+
+            <div class="summary-line d-flex justify-content-between py-2 border-bottom">
+              <span class="text-muted small">Travel Tier:</span>
+              <strong id="sumTier">Explorer Tier</strong>
+            </div>
+
+            <div class="summary-line d-flex justify-content-between py-2 border-bottom">
+              <span class="text-muted small">Selected Activities:</span>
+              <span class="badge bg-soft-blue text-primary" id="sumActivitiesCount">1 Selected</span>
+            </div>
+
+            <!-- Price Breakdown -->
+            <div class="mt-4 pt-2">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <span class="text-muted small">Estimated Per Person:</span>
+                <span class="fw-semibold" id="sumPerPerson">$450</span>
+              </div>
+              <div class="d-flex justify-content-between align-items-baseline mb-3">
+                <span class="fw-bold" style="color: var(--text-dark);">Total Estimated Price:</span>
+                <span class="fs-3 fw-extrabold text-primary" id="sumTotalCost">$900</span>
+              </div>
+            </div>
+
+            <button type="button" id="btnProceedBooking" class="btn btn-accent-coral w-100 py-3 d-flex align-items-center justify-content-center gap-2">
+              <i class="ri-lock-2-line"></i>
+              <span>Lock In This Itinerary</span>
+            </button>
+            <p class="text-center small text-muted mt-2 mb-0"><i class="ri-shield-check-line text-success me-1"></i>Free 7-day cancellation guarantee</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Custom styles specific to planner -->
+  <style>
+    .destination-select-card {
+      position: relative;
+      border: 2px solid var(--card-border);
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      display: block;
+      transition: all 0.25s ease;
+      height: 125px;
+    }
+    .destination-select-card input {
+      display: none;
+    }
+    .destination-select-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .destination-select-card .card-caption {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(13,33,63,0.9) 0%, rgba(13,33,63,0.2) 60%, transparent 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 10px;
+      color: #fff;
+    }
+    .destination-select-card.active {
+      border-color: var(--btn-accent);
+      box-shadow: 0 0 0 3px rgba(255, 71, 87, 0.35);
+      transform: scale(1.02);
+    }
+    .budget-card-label {
+      border: 2px solid var(--card-border);
+      border-radius: 16px;
+      padding: 18px 14px;
+      text-align: center;
+      cursor: pointer;
+      display: block;
+      transition: all 0.25s ease;
+      background: var(--card-bg);
+      height: 100%;
+    }
+    .budget-card-label input { display: none; }
+    .budget-card-label.active {
+      border-color: var(--primary-color);
+      background: var(--primary-light);
+    }
+    .budget-card-label .b-icon {
+      font-size: 1.6rem;
+      color: var(--primary-color);
+      margin-bottom: 6px;
+    }
+    .activity-checkbox-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 14px;
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      background: var(--card-bg);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .activity-checkbox-item input {
+      margin-top: 4px;
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+  </style>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container py-4 text-center">
+      <p class="mb-0 text-muted small">&copy; 2026 <strong>Travel Dost</strong>. Built for memorable adventures worldwide.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="Theme.js"></script>
+  <script src="navbarToggle.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof AOS !== 'undefined') AOS.init({ duration: 800, once: true });
+
+      // Set default dates: tomorrow and +5 days
+      const today = new Date();
+      const start = new Date(today);
+      start.setDate(today.getDate() + 7);
+      const end = new Date(start);
+      end.setDate(start.getDate() + 5);
+
+      const toISO = d => d.toISOString().split('T')[0];
+      const startInput = document.getElementById('planStartDate');
+      const endInput = document.getElementById('planEndDate');
+      startInput.value = toISO(start);
+      endInput.value = toISO(end);
+      startInput.min = toISO(today);
+
+      let adults = 2;
+      let children = 0;
+
+      // Guest Count Handlers
+      const adultsEl = document.getElementById('planAdults');
+      const childEl = document.getElementById('planChildren');
+
+      document.getElementById('btnAdultPlus').onclick = () => { if (adults < 10) { adults++; adultsEl.value = adults; recalculate(); } };
+      document.getElementById('btnAdultMinus').onclick = () => { if (adults > 1) { adults--; adultsEl.value = adults; recalculate(); } };
+      document.getElementById('btnChildPlus').onclick = () => { if (children < 6) { children++; childEl.value = children; recalculate(); } };
+      document.getElementById('btnChildMinus').onclick = () => { if (children > 0) { children--; childEl.value = children; recalculate(); } };
+
+      // Destination card selection UI
+      const destCards = document.querySelectorAll('.destination-select-card');
+      destCards.forEach(card => {
+        card.addEventListener('click', () => {
+          destCards.forEach(c => c.classList.remove('active'));
+          card.classList.add('active');
+          const radio = card.querySelector('input');
+          if (radio) radio.checked = true;
+          recalculate();
+        });
+      });
+
+      // Budget tier selection UI
+      const budgetLabels = document.querySelectorAll('.budget-card-label');
+      budgetLabels.forEach(lbl => {
+        lbl.addEventListener('click', () => {
+          budgetLabels.forEach(l => l.classList.remove('active'));
+          lbl.classList.add('active');
+          const radio = lbl.querySelector('input');
+          if (radio) radio.checked = true;
+          recalculate();
+        });
+      });
+
+      // Activities and room changes
+      document.querySelectorAll('.activity-chk').forEach(chk => chk.addEventListener('change', recalculate));
+      document.getElementById('planRoomType').addEventListener('change', recalculate);
+      startInput.addEventListener('change', recalculate);
+      endInput.addEventListener('change', recalculate);
+
+      function recalculate() {
+        const destChecked = document.querySelector('input[name="planDestination"]:checked');
+        const budgetChecked = document.querySelector('input[name="planBudgetTier"]:checked');
+        const roomType = parseFloat(document.getElementById('planRoomType').value || 1);
+
+        const destName = destChecked ? destChecked.value : 'Custom Destination';
+        const baseCostPerDay = destChecked ? parseFloat(destChecked.dataset.base || 150) : 150;
+        const tierMultiplier = budgetChecked ? parseFloat(budgetChecked.dataset.multiplier || 1) : 1;
+        const tierName = budgetChecked ? budgetChecked.value + ' Tier' : 'Explorer';
+
+        // Calculate Days
+        const d1 = new Date(startInput.value);
+        const d2 = new Date(endInput.value);
+        let days = Math.round((d2 - d1) / (1000 * 60 * 60 * 24));
+        if (days < 1) days = 1;
+
+        // Sum activities
+        let activitiesSum = 0;
+        let actCount = 0;
+        document.querySelectorAll('.activity-chk:checked').forEach(chk => {
+          activitiesSum += parseFloat(chk.dataset.cost || 0);
+          actCount++;
+        });
+
+        // Compute totals
+        const totalGuests = adults + (children * 0.5);
+        const dailyRate = baseCostPerDay * tierMultiplier * roomType;
+        const lodgingTotal = dailyRate * days * Math.ceil(totalGuests / 2);
+        const totalEstimated = Math.round(lodgingTotal + (activitiesSum * adults));
+        const perPerson = Math.round(totalEstimated / adults);
+
+        // Update DOM summary
+        document.getElementById('sumDest').textContent = destName;
+        document.getElementById('sumDays').textContent = `${days} Days / ${days - 1} Nights`;
+        document.getElementById('sumGuests').textContent = `${adults} Adults, ${children} Children`;
+        document.getElementById('sumTier').textContent = tierName;
+        document.getElementById('sumActivitiesCount').textContent = `${actCount} Selected`;
+        document.getElementById('sumPerPerson').textContent = `$${perPerson}`;
+        document.getElementById('sumTotalCost').textContent = `$${totalEstimated.toLocaleString()}`;
+
+        // Update Proceed CTA Link
+        const proceedBtn = document.getElementById('btnProceedBooking');
+        proceedBtn.onclick = () => {
+          const url = `payment.html?dest=${encodeURIComponent(destName)}&price=${totalEstimated}&days=${days}&guests=${adults}`;
+          window.location.href = url;
+        };
+      }
+
+      recalculate();
+    });
+  </script>
+</body>
+</html>

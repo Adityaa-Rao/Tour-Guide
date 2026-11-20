@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rate Us &amp; Feedback - Tourguide</title>
+  <meta name="description" content="Share your travel experiences with Travel Dost. Rate your tour guides, hotels, and journeys to help us improve.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✈️</text></svg>">
+
+  <!-- Fonts & CDN CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@300;400;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Oxygen:wght@300;400;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="header-wrapper sticky-top">
+    <nav class="newNav container-fluid px-lg-5" id="mainNav">
+      <div class="nav-container">
+        <a href="index.html" class="nav__brand">
+          <div class="brand-icon-wrap"><i class="fa-solid fa-earth-americas brand-globe"></i></div>
+          <span class="nav__logo">Tourguide<span>.</span></span>
+          <span class="brand-tag">Travel Dost</span>
+        </a>
+
+        <div class="nav__menu-wrapper" id="navMenu">
+          <ul class="nav__list">
+            <li class="nav__item"><a href="index.html" class="nav__link"><i class="ri-home-4-line me-1"></i>Home</a></li>
+            <li class="nav__item"><a href="about.html" class="nav__link"><i class="ri-information-line me-1"></i>About</a></li>
+            <li class="nav__item"><a href="topdeals/topdeals.html" class="nav__link"><i class="ri-fire-line me-1 text-danger"></i>Top Deals</a></li>
+            <li class="nav__item"><a href="packages.html" class="nav__link"><i class="ri-suitcase-line me-1"></i>Packages</a></li>
+            <li class="nav__item"><a href="feedback.html" class="nav__link active"><i class="ri-star-smile-line me-1"></i>Rate Us?</a></li>
+            <li class="nav__item"><a href="index.html#cnt-form" class="nav__link"><i class="ri-mail-send-line me-1"></i>Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="nav__actions d-flex align-items-center gap-2">
+          <a href="mapa.html" class="btn btn-sm btn-outline-nav d-none d-md-inline-flex align-items-center"><i class="ri-map-2-line me-1"></i>View Map</a>
+          <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Theme"><i class="ri-moon-line moon-icon"></i><i class="ri-sun-line sun-icon"></i></button>
+          <button class="nav__hamburger d-lg-none" id="navMenuBtn" aria-label="Toggle Menu"><span></span><span></span><span></span></button>
+        </div>
+      </div>
+    </nav>
+    <div class="mobile-nav-backdrop" id="navBackdrop"></div>
+  </header>
+
+  <!-- Header -->
+  <section class="page-hero text-center">
+    <div class="container" data-aos="fade-up">
+      <div class="section-badge mb-2"><i class="ri-star-smile-line me-1"></i> Voice of the Traveler</div>
+      <h1 class="hero-title">Your Opinion Shapes Our Journeys</h1>
+      <p class="section-subtitle max-w-700 mx-auto">
+        Tell us about your recent vacation, tour guides, or stay experiences. We review every submission personally to maintain our world-class standards.
+      </p>
+    </div>
+  </section>
+
+  <!-- Feedback Form Section -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8" data-aos="fade-up">
+          
+          <div class="interactive-form-box p-4 p-md-5">
+            <div id="feedbackAlert" class="alert d-none mb-4" role="alert"></div>
+
+            <form id="travelFeedbackForm">
+              
+              <!-- Star Rating System -->
+              <div class="text-center mb-4 pb-3 border-bottom">
+                <label class="form-label fw-bold d-block mb-2" style="color: var(--text-dark); font-size: 1.15rem;">How would you rate your experience?</label>
+                
+                <div class="star-rating-widget my-2">
+                  <input type="radio" id="star5" name="userRating" value="5" checked>
+                  <label for="star5" title="5 Stars - Exceptional"><i class="fa-solid fa-star"></i></label>
+                  
+                  <input type="radio" id="star4" name="userRating" value="4">
+                  <label for="star4" title="4 Stars - Very Good"><i class="fa-solid fa-star"></i></label>
+                  
+                  <input type="radio" id="star3" name="userRating" value="3">
+                  <label for="star3" title="3 Stars - Average"><i class="fa-solid fa-star"></i></label>
+                  
+                  <input type="radio" id="star2" name="userRating" value="2">
+                  <label for="star2" title="2 Stars - Poor"><i class="fa-solid fa-star"></i></label>
+                  
+                  <input type="radio" id="star1" name="userRating" value="1">
+                  <label for="star1" title="1 Star - Terrible"><i class="fa-solid fa-star"></i></label>
+                </div>
+                <div id="ratingTextFeedback" class="small fw-semibold text-primary">5 Stars - Exceptional Journey!</div>
+              </div>
+
+              <!-- Form Inputs -->
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label small fw-semibold text-muted">Your Full Name *</label>
+                  <input type="text" class="form-control" id="fbName" placeholder="e.g. Jessica Taylor" required>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label small fw-semibold text-muted">Email Address *</label>
+                  <input type="email" class="form-control" id="fbEmail" placeholder="jessica@example.com" required>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label small fw-semibold text-muted">Destination / Tour Taken</label>
+                  <input type="text" class="form-control" id="fbDestination" placeholder="e.g. Santorini Honeymoon, Bali Trek">
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label small fw-semibold text-muted">Feedback Category *</label>
+                  <select class="form-select" id="fbCategory" required>
+                    <option value="Tour Guide Excellence">Tour Guide Excellence</option>
+                    <option value="Hotel & Resort Quality">Hotel &amp; Resort Quality</option>
+                    <option value="Itinerary Planning & Coordination">Itinerary Planning &amp; Coordination</option>
+                    <option value="Booking & Payment Experience">Booking &amp; Payment Experience</option>
+                    <option value="Customer Support 24/7">Customer Support 24/7</option>
+                    <option value="Overall Travel Impression">Overall Travel Impression</option>
+                  </select>
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label small fw-semibold text-muted">Your Honest Review &amp; Recommendations *</label>
+                  <textarea class="form-control" id="fbComments" rows="4" placeholder="What did you love most? Any tips for fellow travelers?" required></textarea>
+                </div>
+
+                <div class="col-12">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="fbRecommend" checked>
+                    <label class="form-check-label small text-muted" for="fbRecommend">
+                      I would enthusiastically recommend Travel Dost to friends and family.
+                    </label>
+                  </div>
+                </div>
+
+                <div class="col-12 mt-4">
+                  <button type="submit" class="btn btn-accent-coral w-100 py-3 fw-bold d-flex align-items-center justify-content-center gap-2" id="btnSubmitFeedback">
+                    <i class="ri-send-plane-fill"></i>
+                    <span>Submit Customer Review</span>
+                  </button>
+                </div>
+              </div>
+
+            </form>
+
+          </div>
+
+          <!-- Live User Reviews Feed -->
+          <div class="mt-5" id="reviewsContainer">
+            <h3 class="fw-bold mb-4" style="color: var(--text-dark);">Recent Traveler Feedback</h3>
+            
+            <div class="d-flex flex-column gap-3" id="liveReviewsList">
+              
+              <!-- Review 1 -->
+              <div class="stat-card">
+                <div class="d-flex justify-content-between align-items-start w-100">
+                  <div>
+                    <div class="text-warning mb-1 small">
+                      <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                      <span class="text-muted ms-2 fw-semibold">Tour Guide Excellence</span>
+                    </div>
+                    <h5 class="mb-1 fw-bold" style="color: var(--text-dark);">Daniel &amp; Claire Stevens</h5>
+                    <p class="mb-0 text-muted small">"Our guide Kenji Takahashi in Kyoto was legendary! He went out of his way to introduce us to local craftsmen and booked us a private tea tasting. Truly unbeatable service."</p>
+                  </div>
+                  <span class="badge bg-soft-blue text-primary small">Verified Traveler</span>
+                </div>
+              </div>
+
+              <!-- Review 2 -->
+              <div class="stat-card">
+                <div class="d-flex justify-content-between align-items-start w-100">
+                  <div>
+                    <div class="text-warning mb-1 small">
+                      <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                      <span class="text-muted ms-2 fw-semibold">Hotel &amp; Resort Quality</span>
+                    </div>
+                    <h5 class="mb-1 fw-bold" style="color: var(--text-dark);">Amara Okafor</h5>
+                    <p class="mb-0 text-muted small">"Caldera Mirage Suites in Santorini took our breath away. The infinity pool overlooking the Aegean caldera during sunset is an image etched forever in my mind."</p>
+                  </div>
+                  <span class="badge bg-soft-blue text-primary small">Verified Traveler</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container py-4 text-center">
+      <p class="mb-0 text-muted small">&copy; 2026 <strong>Travel Dost</strong>. Empowering meaningful global explorations.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="Theme.js"></script>
+  <script src="navbarToggle.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof AOS !== 'undefined') AOS.init({ duration: 800, once: true });
+
+      // Rating Label Sync
+      const ratingInputs = document.querySelectorAll('input[name="userRating"]');
+      const ratingLabel = document.getElementById('ratingTextFeedback');
+      const ratingDescriptions = {
+        '5': '5 Stars - Exceptional Journey!',
+        '4': '4 Stars - Very Good Experience',
+        '3': '3 Stars - Satisfactory & Decent',
+        '2': '2 Stars - Needs Improvement',
+        '1': '1 Star - Disappointing'
+      };
+
+      ratingInputs.forEach(input => {
+        input.addEventListener('change', () => {
+          ratingLabel.textContent = ratingDescriptions[input.value] || '5 Stars';
+        });
+      });
+
+      // Submit Review
+      const feedbackForm = document.getElementById('travelFeedbackForm');
+      const feedbackAlert = document.getElementById('feedbackAlert');
+      const liveReviewsList = document.getElementById('liveReviewsList');
+
+      feedbackForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('fbName').value.trim();
+        const email = document.getElementById('fbEmail').value.trim();
+        const dest = document.getElementById('fbDestination').value.trim() || 'Custom Tour';
+        const category = document.getElementById('fbCategory').value;
+        const comments = document.getElementById('fbComments').value.trim();
+        const rating = document.querySelector('input[name="userRating"]:checked').value;
+
+        // Render card into live reviews
+        const newCard = document.createElement('div');
+        newCard.className = 'stat-card';
+        let starsHtml = '';
+        for (let i = 0; i < parseInt(rating); i++) {
+          starsHtml += '<i class="fa-solid fa-star"></i>';
+        }
+
+        newCard.innerHTML = `
+          <div class="d-flex justify-content-between align-items-start w-100">
+            <div>
+              <div class="text-warning mb-1 small">
+                ${starsHtml}
+                <span class="text-muted ms-2 fw-semibold">${category} &middot; ${dest}</span>
+              </div>
+              <h5 class="mb-1 fw-bold" style="color: var(--text-dark);">${name}</h5>
+              <p class="mb-0 text-muted small">"${comments}"</p>
+            </div>
+            <span class="badge bg-soft-coral text-danger small">Just Added</span>
+          </div>
+        `;
+
+        liveReviewsList.prepend(newCard);
+
+        feedbackAlert.className = 'alert alert-success d-block';
+        feedbackAlert.innerHTML = `<i class="ri-checkbox-circle-fill me-1"></i> Thank you, <strong>${name}</strong>! Your review has been published to our traveler wall.`;
+        feedbackForm.reset();
+        document.getElementById('star5').checked = true;
+        ratingLabel.textContent = ratingDescriptions['5'];
+
+        setTimeout(() => {
+          feedbackAlert.className = 'alert d-none';
+        }, 6000);
+      });
+    });
+  </script>
+</body>
+</html>

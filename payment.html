@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secure Checkout - Tour Guide</title>
+  <meta name="description" content="Secure booking checkout for Tour Guide. Confirm guest details and pay securely via Credit Card, Net Banking or UPI.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✈️</text></svg>">
+
+  <!-- Fonts & CDN CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@300;400;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Oxygen:wght@300;400;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="header-wrapper sticky-top">
+    <nav class="newNav container-fluid px-lg-5" id="mainNav">
+      <div class="nav-container">
+        <a href="index.html" class="nav__brand">
+          <div class="brand-icon-wrap"><i class="fa-solid fa-earth-americas brand-globe"></i></div>
+          <span class="nav__logo">Tourguide<span>.</span></span>
+          <span class="brand-tag">Travel Dost</span>
+        </a>
+
+        <div class="d-flex align-items-center gap-3">
+          <span class="badge bg-soft-blue text-primary d-none d-sm-inline-flex align-items-center py-2 px-3 rounded-pill">
+            <i class="ri-shield-check-fill me-1 text-success fs-6"></i> 256-Bit SSL Encrypted Checkout
+          </span>
+          <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Theme"><i class="ri-moon-line moon-icon"></i><i class="ri-sun-line sun-icon"></i></button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-hero text-center py-4">
+    <div class="container" data-aos="fade-up">
+      <h1 class="hero-title fs-2 mb-1">Confirm Your Reservation</h1>
+      <p class="section-subtitle">Review your itinerary, supply passenger details, and choose your preferred secure checkout option.</p>
+    </div>
+  </section>
+
+  <!-- Checkout Container -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row g-5">
+        
+        <!-- Left Column: Guest Details & Payment Tabs -->
+        <div class="col-lg-7" data-aos="fade-right">
+          
+          <!-- Step 1: Passenger / Lead Traveler Information -->
+          <div class="interactive-form-box mb-4">
+            <h4 class="fw-bold mb-3" style="color: var(--text-dark);"><i class="ri-user-3-line text-primary me-2"></i>1. Lead Traveler Details</h4>
+            
+            <form id="passengerForm">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label small fw-semibold text-muted">First Name *</label>
+                  <input type="text" class="form-control" id="pFirstName" placeholder="John" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label small fw-semibold text-muted">Last Name *</label>
+                  <input type="text" class="form-control" id="pLastName" placeholder="Doe" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label small fw-semibold text-muted">Email Address (for vouchers) *</label>
+                  <input type="email" class="form-control" id="pEmail" placeholder="john.doe@example.com" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label small fw-semibold text-muted">Phone Number *</label>
+                  <input type="tel" class="form-control" id="pPhone" placeholder="+1 (555) 019-2834" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label small fw-semibold text-muted">Passport / ID Document Number</label>
+                  <input type="text" class="form-control" id="pPassport" placeholder="A12345678">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label small fw-semibold text-muted">Country of Citizenship</label>
+                  <select class="form-select" id="pCountry">
+                    <option value="US">United States</option>
+                    <option value="UK">United Kingdom</option>
+                    <option value="IN">India</option>
+                    <option value="CA">Canada</option>
+                    <option value="AU">Australia</option>
+                    <option value="DE">Germany</option>
+                    <option value="FR">France</option>
+                  </select>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <!-- Step 2: Payment Method Tabs -->
+          <div class="interactive-form-box">
+            <h4 class="fw-bold mb-3" style="color: var(--text-dark);"><i class="ri-bank-card-line text-primary me-2"></i>2. Select Payment Method</h4>
+            
+            <!-- Payment Nav Tabs -->
+            <ul class="nav nav-pills mb-4 nav-justified" id="paymentTabs" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active rounded-pill fw-semibold" id="card-tab" data-bs-toggle="pill" data-bs-target="#tab-card" type="button" role="tab">
+                  <i class="ri-visa-line me-1"></i> Credit / Debit Card
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link rounded-pill fw-semibold" id="netbanking-tab" data-bs-toggle="pill" data-bs-target="#tab-netbanking" type="button" role="tab">
+                  <i class="ri-bank-line me-1"></i> Net Banking
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link rounded-pill fw-semibold" id="upi-tab" data-bs-toggle="pill" data-bs-target="#tab-upi" type="button" role="tab">
+                  <i class="ri-qr-code-line me-1"></i> UPI / Wallets
+                </button>
+              </li>
+            </ul>
+
+            <!-- Tab Panes -->
+            <div class="tab-content" id="paymentTabsContent">
+              
+              <!-- Tab 1: Credit / Debit Card -->
+              <div class="tab-pane fade show active" id="tab-card" role="tabpanel">
+                <form id="cardPaymentForm">
+                  <div class="row g-3">
+                    <div class="col-12">
+                      <label class="form-label small fw-semibold text-muted">Cardholder Name</label>
+                      <input type="text" class="form-control" id="ccName" placeholder="Name as displayed on card" required>
+                    </div>
+                    <div class="col-12">
+                      <label class="form-label small fw-semibold text-muted">Card Number</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control" id="ccNumber" placeholder="4111 2222 3333 4444" maxlength="19" required>
+                        <span class="input-group-text bg-white"><i class="fa-brands fa-cc-visa text-primary me-1"></i><i class="fa-brands fa-cc-mastercard text-danger"></i></span>
+                      </div>
+                    </div>
+                    <div class="col-md-6 col-6">
+                      <label class="form-label small fw-semibold text-muted">Expiry (MM/YY)</label>
+                      <input type="text" class="form-control" id="ccExpiry" placeholder="08/28" maxlength="5" required>
+                    </div>
+                    <div class="col-md-6 col-6">
+                      <label class="form-label small fw-semibold text-muted">CVV / CVC</label>
+                      <input type="password" class="form-control" id="ccCvv" placeholder="•••" maxlength="4" required>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+              <!-- Tab 2: Net Banking -->
+              <div class="tab-pane fade" id="tab-netbanking" role="tabpanel">
+                <p class="small text-muted mb-3">Choose your recognized financial banking partner for instant redirected authorization.</p>
+                <div class="row g-3 mb-3">
+                  <div class="col-md-4 col-6">
+                    <div class="p-3 border rounded-3 text-center bank-item active-bank" role="button">
+                      <i class="ri-bank-fill fs-3 text-primary d-block"></i>
+                      <strong class="small">Chase / JP Morgan</strong>
+                    </div>
+                  </div>
+                  <div class="col-md-4 col-6">
+                    <div class="p-3 border rounded-3 text-center bank-item" role="button">
+                      <i class="ri-bank-fill fs-3 text-danger d-block"></i>
+                      <strong class="small">Bank of America</strong>
+                    </div>
+                  </div>
+                  <div class="col-md-4 col-6">
+                    <div class="p-3 border rounded-3 text-center bank-item" role="button">
+                      <i class="ri-bank-fill fs-3 text-success d-block"></i>
+                      <strong class="small">HDFC / ICICI</strong>
+                    </div>
+                  </div>
+                </div>
+                <label class="form-label small fw-semibold text-muted">Or select other global institution:</label>
+                <select class="form-select">
+                  <option>Barclays Bank UK</option>
+                  <option>HSBC Global</option>
+                  <option>Deutsche Bank</option>
+                  <option>Citibank</option>
+                  <option>State Bank of India</option>
+                </select>
+              </div>
+
+              <!-- Tab 3: UPI / Wallets -->
+              <div class="tab-pane fade text-center" id="tab-upi" role="tabpanel">
+                <div class="p-3 border rounded-4 d-inline-block bg-white mb-3 shadow-sm">
+                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=upi://pay?pa=traveldost@okaxis&pn=TravelDost" alt="UPI QR Code" style="width: 140px; height: 140px;">
+                </div>
+                <p class="small text-muted mb-2">Scan with Google Pay, PhonePe, Paytm, or Apple Pay</p>
+                <div class="input-group max-w-700 mx-auto" style="max-width: 320px;">
+                  <input type="text" class="form-control text-center" placeholder="username@upi" id="upiVpa">
+                  <button class="btn btn-outline-primary" type="button" id="btnVerifyUpi">Verify VPA</button>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Pay Now Button -->
+            <div class="mt-4 pt-3 border-top">
+              <button class="btn btn-accent-coral w-100 py-3 fs-5 fw-bold d-flex align-items-center justify-content-center gap-2" id="btnCompletePayment">
+                <i class="ri-shield-check-fill"></i>
+                <span id="payBtnLabel">Authorize &amp; Pay $944</span>
+              </button>
+              <div class="d-flex justify-content-center align-items-center gap-3 mt-3 text-muted small">
+                <span><i class="ri-lock-fill text-success"></i> 256-Bit SSL</span>
+                <span>&bull;</span>
+                <span><i class="ri-check-line text-success"></i> Instant Voucher PDF</span>
+                <span>&bull;</span>
+                <span><i class="ri-arrow-go-back-line text-success"></i> 100% Refundable</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Right Column: Booking Summary & Promo -->
+        <div class="col-lg-5" data-aos="fade-left">
+          <div class="interactive-form-box sticky-top" style="top: 100px;">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h4 class="fw-bold mb-0" style="color: var(--text-dark);">Booking Summary</h4>
+              <span class="badge bg-soft-coral text-danger">Direct Booking</span>
+            </div>
+
+            <div class="summary-package-card p-3 rounded-4 mb-3" style="background: var(--primary-light);">
+              <h5 class="fw-bold mb-1" id="checkoutTitle">Paris, France Explorer</h5>
+              <p class="small text-muted mb-2" id="checkoutSub">5 Days / 4 Nights &middot; 2 Travelers</p>
+              <span class="badge bg-success"><i class="ri-check-line me-1"></i>Free Cancellation Until 7 Days Prior</span>
+            </div>
+
+            <div class="checkout-breakdown mb-4">
+              <div class="d-flex justify-content-between py-2 border-bottom">
+                <span class="text-muted small">Base Package Fare:</span>
+                <span class="fw-semibold" id="baseFareAmount">$899.00</span>
+              </div>
+              <div class="d-flex justify-content-between py-2 border-bottom">
+                <span class="text-muted small">Government Tourism Tax &amp; GST:</span>
+                <span class="fw-semibold">$45.00</span>
+              </div>
+              <div class="d-flex justify-content-between py-2 border-bottom">
+                <span class="text-muted small">Global Medical Insurance:</span>
+                <span class="text-success fw-semibold">FREE (Included)</span>
+              </div>
+              <div class="d-flex justify-content-between py-2 border-bottom d-none" id="discountRow">
+                <span class="text-success small fw-bold">Promo Discount (20% OFF):</span>
+                <span class="text-success fw-bold" id="discountAmount">-$179.80</span>
+              </div>
+              <div class="d-flex justify-content-between align-items-baseline pt-3">
+                <span class="fs-5 fw-bold" style="color: var(--text-dark);">Total Amount Payable:</span>
+                <span class="fs-2 fw-extrabold text-primary" id="finalTotalAmount">$944.00</span>
+              </div>
+            </div>
+
+            <!-- Promo Code Capsule -->
+            <div class="promo-capsule mb-4">
+              <label class="form-label small fw-semibold text-muted">Have a Coupon Code?</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="promoInput" placeholder="Try TRAVELDOST20">
+                <button class="btn btn-outline-primary" type="button" id="btnApplyPromo">Apply</button>
+              </div>
+              <div id="promoFeedback" class="small mt-1"></div>
+            </div>
+
+            <!-- Traveler Help Card -->
+            <div class="p-3 border rounded-3 text-muted small">
+              <p class="mb-1 fw-bold"><i class="ri-customer-service-2-line text-primary me-1"></i> Need assistance with booking?</p>
+              <p class="mb-0">Speak directly to our 24/7 concierge team at <strong>+1 (800) 555-8728</strong>.</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Payment Confirmation Modal -->
+  <div class="modal fade" id="paymentSuccessModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content text-center p-4" style="background-color: var(--card-bg); border-radius: 24px; border: 1px solid var(--card-border);">
+        <div class="modal-body">
+          <div class="success-check-wrap mx-auto mb-3" style="width: 70px; height: 70px; border-radius: 50%; background: rgba(16,185,129,0.15); display: flex; align-items: center; justify-content: center; color: #10b981; font-size: 2.2rem;">
+            <i class="ri-checkbox-circle-fill"></i>
+          </div>
+          <h3 class="fw-bold mb-1" style="color: var(--text-dark);">Reservation Confirmed!</h3>
+          <p class="text-muted small mb-3">Your booking has been authorized and confirmed in our system.</p>
+
+          <div class="p-3 rounded-3 text-start mb-3" style="background: var(--primary-light);">
+            <div class="d-flex justify-content-between mb-1">
+              <span class="small text-muted">Booking Reference:</span>
+              <strong class="text-primary" id="receiptBookingId">TD-2026-94812</strong>
+            </div>
+            <div class="d-flex justify-content-between mb-1">
+              <span class="small text-muted">Lead Traveler:</span>
+              <strong id="receiptTraveler">John Doe</strong>
+            </div>
+            <div class="d-flex justify-content-between mb-1">
+              <span class="small text-muted">Destination:</span>
+              <strong id="receiptDest">Paris, France</strong>
+            </div>
+            <div class="d-flex justify-content-between">
+              <span class="small text-muted">Amount Paid:</span>
+              <strong class="text-success" id="receiptTotal">$944.00</strong>
+            </div>
+          </div>
+
+          <p class="small text-muted mb-4">Official confirmation vouchers and native tour guide contacts have been dispatched to your email.</p>
+
+          <div class="d-flex gap-2">
+            <button class="btn btn-outline-primary w-100" onclick="window.print()"><i class="ri-printer-line me-1"></i> Print Receipt</button>
+            <a href="index.html" class="btn btn-primary w-100">Back to Home</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="Theme.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof AOS !== 'undefined') AOS.init({ duration: 800, once: true });
+
+      // Parse Query Params
+      const urlParams = new URLSearchParams(window.location.search);
+      const pkgParam = urlParams.get('pkg');
+      const destParam = urlParams.get('dest');
+      const hotelParam = urlParams.get('hotel');
+      const priceParam = parseFloat(urlParams.get('price')) || 899;
+
+      const titleName = pkgParam || destParam || hotelParam || 'Custom Holiday Package';
+      document.getElementById('checkoutTitle').textContent = titleName;
+      document.getElementById('checkoutSub').textContent = `Confirmed Reservation &middot; All-Inclusive Services`;
+
+      let basePrice = priceParam;
+      let tax = 45;
+      let discount = 0;
+
+      function renderPrices() {
+        const total = (basePrice + tax) - discount;
+        document.getElementById('baseFareAmount').textContent = `$${basePrice.toFixed(2)}`;
+        document.getElementById('finalTotalAmount').textContent = `$${total.toFixed(2)}`;
+        document.getElementById('payBtnLabel').textContent = `Authorize & Pay $${total.toFixed(2)}`;
+      }
+
+      renderPrices();
+
+      // Promo Code Validation
+      const promoInput = document.getElementById('promoInput');
+      const promoBtn = document.getElementById('btnApplyPromo');
+      const promoFeedback = document.getElementById('promoFeedback');
+      const discountRow = document.getElementById('discountRow');
+      const discountAmountEl = document.getElementById('discountAmount');
+
+      promoBtn.addEventListener('click', () => {
+        const code = promoInput.value.trim().toUpperCase();
+        if (code === 'TRAVELDOST20') {
+          discount = basePrice * 0.20;
+          discountRow.classList.remove('d-none');
+          discountAmountEl.textContent = `-$${discount.toFixed(2)}`;
+          promoFeedback.innerHTML = `<span class="text-success"><i class="ri-checkbox-circle-fill me-1"></i> Coupon TRAVELDOST20 applied! 20% discount saved.</span>`;
+          promoBtn.disabled = true;
+          promoInput.disabled = true;
+          renderPrices();
+        } else {
+          promoFeedback.innerHTML = `<span class="text-danger"><i class="ri-close-circle-fill me-1"></i> Invalid coupon code. Try "TRAVELDOST20".</span>`;
+        }
+      });
+
+      // Credit card formatting helper
+      const ccNumber = document.getElementById('ccNumber');
+      if (ccNumber) {
+        ccNumber.addEventListener('input', (e) => {
+          let val = e.target.value.replace(/\D/g, '').substring(0, 16);
+          val = val.replace(/(.{4})/g, '$1 ').trim();
+          e.target.value = val;
+        });
+      }
+
+      // Expiry formatting helper
+      const ccExpiry = document.getElementById('ccExpiry');
+      if (ccExpiry) {
+        ccExpiry.addEventListener('input', (e) => {
+          let val = e.target.value.replace(/\D/g, '').substring(0, 4);
+          if (val.length >= 2) val = val.substring(0, 2) + '/' + val.substring(2);
+          e.target.value = val;
+        });
+      }
+
+      // Complete Payment Click Handler
+      const payBtn = document.getElementById('btnCompletePayment');
+      const successModal = new bootstrap.Modal(document.getElementById('paymentSuccessModal'));
+
+      payBtn.addEventListener('click', () => {
+        const fName = document.getElementById('pFirstName').value.trim() || 'John';
+        const lName = document.getElementById('pLastName').value.trim() || 'Doe';
+        const email = document.getElementById('pEmail').value.trim() || 'john.doe@example.com';
+
+        // Payment Simulation Spinner
+        const origContent = payBtn.innerHTML;
+        payBtn.disabled = true;
+        payBtn.innerHTML = `<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span> Encrypting &amp; Authorizing with Bank...`;
+
+        setTimeout(() => {
+          payBtn.disabled = false;
+          payBtn.innerHTML = origContent;
+
+          // Fill receipt
+          const randomId = 'TD-2026-' + Math.floor(10000 + Math.random() * 90000);
+          document.getElementById('receiptBookingId').textContent = randomId;
+          document.getElementById('receiptTraveler').textContent = `${fName} ${lName}`;
+          document.getElementById('receiptDest').textContent = titleName;
+          document.getElementById('receiptTotal').textContent = document.getElementById('finalTotalAmount').textContent;
+
+          successModal.show();
+        }, 1800);
+      });
+    });
+  </script>
+</body>
+</html>

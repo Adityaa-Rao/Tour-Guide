@@ -1,0 +1,1976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tour Guide - Discover Your Next Adventure</title>
+  <meta name="description" content="Tour Guide is your ultimate companion to discover the world's best-kept wonders, luxury packages, vetted tour guides, and boutique stays.">
+  <meta name="keywords" content="travel agency, vacation packages, tour guides, luxury hotels, flights, ">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✈️</text></svg>">
+
+  <!-- Google Fonts: Poppins, Noto Serif, Oxygen, Afacad Flux -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@300;400;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Oxygen:wght@300;400;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Remix Icon -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css">
+
+  <!-- AOS (Animate On Scroll) CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+
+  <!-- Swiper.js CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
+
+  <!-- jQuery Flipster CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.flipster/1.1.5/jquery.flipster.min.css">
+
+  <!-- Leaflet CSS for Map Explorer -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+  <!-- Core Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Preloader Overlay -->
+  <div id="pre-loader">
+    <div class="loader-content">
+      <div class="loader-plane"><i class="fa-solid fa-plane-departure"></i></div>
+      <div class="loader-ring"></div>
+      <p class="loader-text">Preparing Your Journey with <span>TourGuide</span>...</p>
+    </div>
+  </div>
+
+  <!-- Scroll Progress Bar -->
+  <div id="progress-bar"></div>
+
+  <!-- Floating Back to Top Button -->
+  <button class="goupbtn" id="goUpBtn" aria-label="Back to Top" title="Back to Top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- ============================================== -->
+  <!-- 1. HEADER & NAVIGATION                         -->
+  <!-- ============================================== -->
+  <header class="header-wrapper sticky-top">
+    <nav class="newNav container-fluid px-lg-5" id="mainNav">
+      <div class="nav-container">
+        
+        <!-- Brand Logo -->
+        <a href="index.html" class="nav__brand">
+          <div class="brand-icon-wrap">
+            <i class="fa-solid fa-earth-americas brand-globe"></i>
+          </div>
+          <span class="nav__logo">Tour<span>Guide</span></span>
+        
+        </a>
+
+        <!-- Desktop Navigation Menu -->
+        <div class="nav__menu-wrapper" id="navMenu">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a href="#Home" class="nav__link active"><i class="ri-home-4-line me-1"></i>Home</a>
+            </li>
+            <li class="nav__item">
+              <a href="about.html" class="nav__link"><i class="ri-information-line me-1"></i>About</a>
+            </li>
+            <!-- Services Dropdown -->
+            <li class="nav__item dropdown">
+              <a class="nav__link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="ri-service-line me-1"></i>Services
+              </a>
+              <ul class="dropdown-menu modern-dropdown" aria-labelledby="servicesDropdown">
+                <li><a class="dropdown-item" href="#MapExplorer"><i class="ri-map-pin-2-fill me-2 text-danger"></i>Interactive Map &amp; Malls</a></li>
+                <li><a class="dropdown-item" href="#Destinations"><i class="ri-map-pin-line me-2 text-primary"></i>Destinations</a></li>
+                <li><a class="dropdown-item" href="#trip"><i class="ri-price-tag-3-line me-2 text-primary"></i>Prices & Packages</a></li>
+                <li><a class="dropdown-item" href="#ReviewGallery"><i class="ri-gallery-line me-2 text-primary"></i>Trip Gallery</a></li>
+                <li><a class="dropdown-item" href="#tourist"><i class="ri-user-star-line me-2 text-primary"></i>Tourist Guides</a></li>
+                <li><a class="dropdown-item" href="#hotel"><i class="ri-hotel-line me-2 text-primary"></i>Hotel & Resort</a></li>
+              </ul>
+            </li>
+            <li class="nav__item">
+              <a href="topdeals/topdeals.html" class="nav__link"><i class="ri-fire-line me-1 text-danger"></i>Top Deals</a>
+            </li>
+            <li class="nav__item">
+              <a href="packages.html" class="nav__link"><i class="ri-suitcase-line me-1"></i>Packages</a>
+            </li>
+            <li class="nav__item">
+              <a href="#testimonial" class="nav__link"><i class="ri-chat-smile-2-line me-1"></i>Testimonial</a>
+            </li>
+            <li class="nav__item">
+              <a href="feedback.html" class="nav__link"><i class="ri-star-smile-line me-1"></i>Rate Us?</a>
+            </li>
+            <li class="nav__item">
+              <a href="#cnt-form" class="nav__link"><i class="ri-mail-send-line me-1"></i>Contact Us</a>
+            </li>
+          </ul>
+
+          <!-- Nav Action Buttons Inside Drawer for Mobile -->
+          <div class="nav-drawer-actions d-lg-none mt-4">
+            <a href="mapa.html" class="btn btn-outline-primary w-100 mb-2"><i class="ri-map-2-line me-2"></i>View Map</a>
+            <a href="newLogin.html" class="btn btn-primary w-100 auth-btn-state"><i class="ri-user-line me-2"></i>Login / Sign Up</a>
+          </div>
+        </div>
+
+        <!-- Right Side Nav Actions: Map, Auth, Dark Toggle, Hamburger -->
+        <div class="nav__actions d-flex align-items-center gap-2">
+          
+          <!-- View Map CTA -->
+          <a href="mapa.html" class="btn btn-sm btn-outline-nav d-none d-md-inline-flex align-items-center" title="Explore Interactive Map">
+            <i class="ri-map-2-line me-1"></i>
+            <span>View Map</span>
+          </a>
+
+          <!-- Dynamic Auth Button -->
+          <a href="newLogin.html" id="navAuthBtn" class="btn btn-sm btn-primary-nav d-none d-sm-inline-flex align-items-center auth-btn-state">
+            <i class="ri-user-line me-1"></i>
+            <span id="navAuthText">Log In</span>
+          </a>
+
+          <!-- Theme Toggle Switch -->
+          <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Dark or Light Mode" title="Toggle Theme">
+            <i class="ri-moon-line moon-icon"></i>
+            <i class="ri-sun-line sun-icon"></i>
+          </button>
+
+          <!-- Mobile Hamburger Toggle -->
+          <button class="nav__hamburger d-lg-none" id="navMenuBtn" aria-label="Toggle Navigation Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+
+      </div>
+    </nav>
+    <div class="mobile-nav-backdrop" id="navBackdrop"></div>
+  </header>
+
+  <!-- ============================================== -->
+  <!-- 2. HERO SECTION                                -->
+  <!-- ============================================== -->
+  <section class="hero-section" id="Home">
+    <div class="hero-bg-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+    </div>
+    <div class="container hero-container">
+      <div class="row align-items-center g-5 min-vh-80">
+        
+        <!-- Hero Content Column -->
+        <div class="col-lg-6 hero-content-col" data-aos="fade-right" data-aos-duration="1000">
+          <div class="hero-badge mb-3">
+            <span class="badge-dot"></span>
+            <span class="badge-text">#1 Premier Travel Partner &middot; 2026 Edition</span>
+          </div>
+          
+          <h1 class="hero-title">
+            Find Your Perfect Getaway <br>
+            <span class="serif-title">Discover the World's Best Kept </span>
+            <span class="auto-typed-wrapper">
+              <span class="auto-typed"></span>
+            </span>
+          </h1>
+          
+          <p class="hero-subtitle">
+            Make your travel more enjoyable with us. We are the best travel agency providing the best travel services for our clients. Curated adventures, seamless luxury stays, and unforgettable memories designed exclusively for you.
+          </p>
+
+          <!-- Action CTA Buttons -->
+          <div class="hero-cta-group d-flex flex-wrap gap-3 pt-2">
+            <a href="payment.html" class="btn btn-accent-coral">
+              <i class="ri-flashlight-line me-1"></i> Book Now
+            </a>
+            <a href="plantrip.html" class="btn btn-outline-hero">
+              <i class="ri-compass-3-line me-1"></i> Plan a Trip
+            </a>
+            <a href="membership.html" class="btn btn-subtle-membership">
+              <i class="ri-vip-crown-2-line me-1"></i> Membership
+            </a>
+          </div>
+
+          <!-- Traveler Trust Strip -->
+          <div class="hero-trust-strip mt-4 d-flex align-items-center gap-3">
+            <div class="avatar-group">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="Traveler" class="trust-avatar">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="Traveler" class="trust-avatar">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" alt="Traveler" class="trust-avatar">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80" alt="Traveler" class="trust-avatar">
+            </div>
+            <div class="trust-text">
+              <div class="stars text-warning"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+              <p class="mb-0"><strong>4.9 / 5</strong> from 150,000+ happy global voyagers</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Media Column: Dual Staggered Imagery & Video Card -->
+        <div class="col-lg-6 hero-visual-col" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+          <div class="hero-image-composition">
+            
+            <!-- Primary Staggered Card -->
+            <div class="image-card card-primary">
+              <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80" alt="Tropical Paradise Beach" class="hero-img">
+              <div class="image-tag-floating">
+                <i class="ri-map-pin-2-fill text-danger"></i>
+                <div>
+                  <span class="tag-title">Maldives Atoll</span>
+                  <span class="tag-sub">Top Trending 2026</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Secondary Staggered Card -->
+            <div class="image-card card-secondary">
+              <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=600&q=80" alt="Parisian Sunset" class="hero-img">
+              <div class="image-tag-badge">
+                <i class="ri-shield-star-fill text-warning"></i> 100% Certified Tours
+              </div>
+            </div>
+
+            <!-- Floating Video Teaser Card Linking to story.html -->
+            <div class="video-teaser-card" data-aos="zoom-in" data-aos-delay="500">
+              <a href="story.html" class="video-teaser-link" title="Watch Our Travel Stories">
+                <div class="video-thumb-wrap">
+                  <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=300&q=80" alt="Video Teaser" class="video-thumb">
+                  <span class="pulse-play-btn">
+                    <i class="fa-solid fa-play"></i>
+                  </span>
+                </div>
+                <div class="video-teaser-info">
+                  <span class="video-title">Watch Travel Story</span>
+                  <span class="video-duration"><i class="ri-time-line me-1"></i>2:45 min expedition</span>
+                </div>
+              </a>
+            </div>
+
+            <!-- Floating Decorative Bubble -->
+            <div class="floating-bubble bubble-top">
+              <i class="ri-flight-takeoff-line"></i>
+              <span>Direct Flights</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================== -->
+  <!-- 3. ABOUT US & LIVE COUNTER SECTION             -->
+  <!-- ============================================== -->
+  <section class="about-section py-5" id="AboutUs">
+    <div class="container py-lg-4">
+      <div class="row align-items-center g-5">
+        
+        <!-- About Visuals -->
+        <div class="col-lg-6" data-aos="fade-right">
+          <div class="about-showcase-box position-relative">
+            <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=800&q=80" alt="Travel Showcase Experience" class="img-fluid rounded-4 shadow-lg main-about-img">
+            
+            <div class="experience-card">
+              <span class="exp-number">12+</span>
+              <span class="exp-text">Years of Crafting Unforgettable Journeys</span>
+            </div>
+            
+            <div class="award-card">
+              <i class="ri-award-fill text-warning fs-3"></i>
+              <div>
+                <strong>Global Travel Winner</strong>
+                <small class="d-block text-muted">World Tourism Excellence 2025</small>
+              </div>
+            </div>
+
+            <!-- Floating Certified Guide Badge -->
+            <div class="guide-quote-card">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" alt="Camille Dupont" class="guide-quote-avatar">
+              <div>
+                <strong class="d-block small" style="color: var(--text-dark);">Camille Dupont</strong>
+                <small class="text-muted d-block" style="font-size: 0.72rem;"><i class="fa-solid fa-star text-warning"></i> 4.98 &middot; Paris Native Guide</small>
+                <span class="badge bg-soft-blue text-primary" style="font-size: 0.68rem;"><i class="ri-checkbox-circle-fill me-1"></i>Verified Local Expert</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- About Content & Interactive Tabs -->
+        <div class="col-lg-6" data-aos="fade-left">
+          <div class="section-badge mb-2">
+            <i class="ri-compasses-2-line me-1"></i> About Tour Guide
+          </div>
+          <h2 class="section-title mb-3">
+            Redefining How the World Experiences <span class="highlight-purple">Travel</span>
+          </h2>
+          <p class="text-secondary-lead mb-4">
+            Founded with a passion to break the boundaries of conventional tourism, <strong>Travel Dost</strong> connects travelers directly with authentic local experiences, bespoke luxury itineraries, and licensed native guides across all seven continents.
+          </p>
+
+          <!-- Interactive About Tabs Navigation -->
+          <div class="about-tab-nav" id="aboutTabNav">
+            <button class="about-tab-btn active" data-tab="why-us">
+              <i class="ri-shield-star-line"></i> Why Tour Guide
+            </button>
+            <button class="about-tab-btn" data-tab="heritage">
+              <i class="ri-history-line"></i> Our Heritage
+            </button>
+            <button class="about-tab-btn" data-tab="eco">
+              <i class="ri-leaf-line"></i> Eco Tourism
+            </button>
+            <button class="about-tab-btn" data-tab="guarantee">
+              <i class="ri-lock-check-line"></i> Guarantees
+            </button>
+          </div>
+
+          <!-- Tab Content Panes -->
+          <div class="about-tab-content mb-4">
+            
+            <!-- Pane 1: Why Tour Guide -->
+            <div class="about-tab-pane active" id="pane-why-us">
+              <ul class="about-checklist">
+                <li><i class="ri-checkbox-circle-fill text-success fs-5"></i> <strong>25,000+ Multilingual Certified Guides:</strong> Experienced historians, mountaineers, and local storytellers who grew up in the valleys.</li>
+                <li><i class="ri-checkbox-circle-fill text-success fs-5"></i> <strong>Handpicked Luxury &amp; Boutique Stays:</strong> Every property is vetted for comfort, safety, and authentic character with exclusive VIP upgrades.</li>
+                <li><i class="ri-checkbox-circle-fill text-success fs-5"></i> <strong>Transparent &amp; All-Inclusive:</strong> Zero hidden resort fees or surprise charges — what you see is what you pay.</li>
+              </ul>
+            </div>
+
+            <!-- Pane 2: Our Heritage -->
+            <div class="about-tab-pane" id="pane-heritage">
+              <ul class="about-checklist">
+                <li><i class="ri-checkbox-circle-fill text-primary fs-5"></i> <strong>Founded in 2014 by Backpackers:</strong> Created to replace crowded tour buses with intimate, tailor-made adventures.</li>
+                <li><i class="ri-checkbox-circle-fill text-primary fs-5"></i> <strong>150,000+ Journeys Crafted:</strong> Navigating over 80 countries with a verified 99.4% customer satisfaction score.</li>
+                <li><i class="ri-checkbox-circle-fill text-primary fs-5"></i> <strong>Global Recognition:</strong> Crowned World Tourism Excellence Winner for digital traveler safety &amp; guide empowerment.</li>
+              </ul>
+            </div>
+
+            <!-- Pane 3: Eco Tourism -->
+            <div class="about-tab-pane" id="pane-eco">
+              <ul class="about-checklist">
+                <li><i class="ri-checkbox-circle-fill text-success fs-5"></i> <strong>5% Giveback Initiative:</strong> A portion of every booked package directly funds indigenous community schools and wildlife conservation.</li>
+                <li><i class="ri-checkbox-circle-fill text-success fs-5"></i> <strong>Zero Single-Use Plastic:</strong> Free refillable thermal flasks and eco-trail kits provided on all adventure expeditions.</li>
+                <li><i class="ri-checkbox-circle-fill text-success fs-5"></i> <strong>Support Local Artisans:</strong> Direct visits to family olive mills, weaving studios, and organic farmers.</li>
+              </ul>
+            </div>
+
+            <!-- Pane 4: Guarantees -->
+            <div class="about-tab-pane" id="pane-guarantee">
+              <ul class="about-checklist">
+                <li><i class="ri-checkbox-circle-fill text-danger fs-5"></i> <strong>100% Refundable Deposit:</strong> Cancel up to 7 days before departure with zero penalties or questions asked.</li>
+                <li><i class="ri-checkbox-circle-fill text-danger fs-5"></i> <strong>Emergency Medical Coverage:</strong> Up to $100,000 emergency medical and baggage loss protection included.</li>
+                <li><i class="ri-checkbox-circle-fill text-danger fs-5"></i> <strong>24/7 Rapid Concierge Hotline:</strong> Instant human support via WhatsApp, phone, and in-app live chat anytime.</li>
+              </ul>
+            </div>
+
+          </div>
+
+          <div class="d-flex flex-wrap align-items-center gap-3">
+            <a href="about.html" class="btn btn-outline-primary px-4 py-2">
+              Learn More About Us <i class="ri-arrow-right-line ms-1"></i>
+            </a>
+            <a href="#MapExplorer" class="btn btn-accent-coral px-4 py-2">
+              <i class="ri-map-pin-2-line me-1"></i> Open Map Explorer
+            </a>
+            <a href="story.html" class="btn btn-link text-decoration-none text-dark fw-semibold">
+              <i class="ri-movie-line text-primary me-1"></i> Read Stories
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Live Counter Cards (.stats) -->
+      <div class="stats mt-5 pt-4" id="statsSection">
+        <div class="row g-4">
+          
+          <div class="col-lg-3 col-sm-6" data-aos="zoom-in" data-aos-delay="100">
+            <div class="stat-card">
+              <div class="stat-icon-wrap bg-soft-blue">
+                <i class="ri-user-star-fill text-primary"></i>
+              </div>
+              <div class="stat-details">
+                <h3 class="stat-number"><span id="guidesCount">0</span>+</h3>
+                <p class="stat-label">Certified Tour Guides</p>
+                <span class="stat-sub">Vetted across 80+ countries</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-sm-6" data-aos="zoom-in" data-aos-delay="200">
+            <div class="stat-card">
+              <div class="stat-icon-wrap bg-soft-purple">
+                <i class="ri-earth-line text-purple"></i>
+              </div>
+              <div class="stat-details">
+                <h3 class="stat-number"><span id="toursCount">0</span>+</h3>
+                <p class="stat-label">Curated Tours Completed</p>
+                <span class="stat-sub">With 99.4% satisfaction score</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-sm-6" data-aos="zoom-in" data-aos-delay="300">
+            <div class="stat-card">
+              <div class="stat-icon-wrap bg-soft-coral">
+                <i class="ri-map-pin-range-line text-danger"></i>
+              </div>
+              <div class="stat-details">
+                <h3 class="stat-number"><span id="destinationsCount">0</span>+</h3>
+                <p class="stat-label">Global Destinations</p>
+                <span class="stat-sub">From bustling cities to hidden isles</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-sm-6" data-aos="zoom-in" data-aos-delay="400">
+            <div class="stat-card">
+              <div class="stat-icon-wrap bg-soft-blue">
+                <i class="ri-empathize-line text-success"></i>
+              </div>
+              <div class="stat-details">
+                <h3 class="stat-number"><span id="voyagersCount">0</span>+</h3>
+                <p class="stat-label">Happy Global Voyagers</p>
+                <span class="stat-sub">Traveling with peace of mind</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================== -->
+  <!-- 4. LIVE UNIVERSAL MAP & MALL EXPLORER          -->
+  <!-- ============================================== -->
+  <section class="map-explorer-section py-5" id="MapExplorer">
+    <div class="container py-lg-4">
+      
+      <div class="text-center max-w-700 mx-auto mb-4" data-aos="fade-up">
+        <div class="section-badge mb-2">
+          <i class="ri-map-pin-2-fill text-danger me-1"></i> Live Universal Map &amp; Mall Explorer
+        </div>
+        <h2 class="section-title">Explore Every Place, Landmark &amp; Mall on Earth</h2>
+        <p class="section-subtitle">
+          Search any city, monument, or world-famous shopping mall with live real-time navigation — or click our curated suggested hotspots to fly right in.
+        </p>
+      </div>
+
+      <!-- Universal Search & Filters -->
+      <div class="map-search-container" data-aos="fade-up" data-aos-delay="100">
+        <div class="map-search-bar">
+          <div class="map-input-group">
+            <i class="ri-search-2-line map-search-icon-left"></i>
+            <input type="text" id="mapGlobalSearchInput" class="map-search-input" placeholder="Search any city, place, attraction or mall (e.g. Dubai Mall, Eiffel Tower, Harrods, Taj Mahal, Siam Paragon)..." autocomplete="off">
+            <div class="map-search-actions">
+              <button type="button" class="btn btn-sm btn-outline-secondary d-none" id="clearMapSearchBtn" title="Clear Search"><i class="ri-close-line"></i></button>
+              <button type="button" class="btn-map-search" id="btnExecuteMapSearch">
+                <i class="ri-navigation-line"></i>
+                <span class="d-none d-sm-inline">Find on Map</span>
+              </button>
+            </div>
+          </div>
+          <!-- Live Real-Time Suggestions Dropdown -->
+          <div class="map-suggestions-dropdown" id="mapSearchDropdown"></div>
+        </div>
+
+        <!-- Best Suggest Places Category Filter Pills -->
+        <div class="map-category-pills" id="mapCategoryPills">
+          <button type="button" class="map-cat-pill active" data-map-cat="all"><i class="ri-sparkling-fill text-warning"></i> 🌟 All Highlights</button>
+          <button type="button" class="map-cat-pill" data-map-cat="mall"><i class="ri-shopping-bag-3-fill text-danger"></i> 🛍️ Famous Malls &amp; Shopping</button>
+          <button type="button" class="map-cat-pill" data-map-cat="wonder"><i class="ri-ancient-gate-fill text-primary"></i> 🏛️ World Wonders</button>
+          <button type="button" class="map-cat-pill" data-map-cat="beach"><i class="ri-sun-cloudy-fill text-warning"></i> 🏖️ Paradise Beaches</button>
+          <button type="button" class="map-cat-pill" data-map-cat="nature"><i class="ri-landscape-fill text-success"></i> 🌲 Nature &amp; Adventures</button>
+          <button type="button" class="map-cat-pill" data-map-cat="luxury"><i class="ri-hotel-bed-fill text-purple"></i> 🏨 Luxury Stays &amp; Resorts</button>
+        </div>
+      </div>
+
+      <!-- Map Canvas Container with Floating Controls -->
+      <div class="home-map-canvas-wrap" data-aos="zoom-in" data-aos-delay="150">
+        <div class="map-floating-controls">
+          <button type="button" class="btn-map-control" id="btnMapResetView" title="Reset to Global View"><i class="ri-globe-line"></i> Global View</button>
+          <button type="button" class="btn-map-control" id="btnMapLayerToggle" title="Toggle Map Layer"><i class="ri-stack-line"></i> Satellite Layer</button>
+        </div>
+        <div id="homeWorldMap"></div>
+      </div>
+
+      <!-- Suggested Hotspots Carousel Tray Below Map -->
+      <div class="suggested-places-strip" data-aos="fade-up" data-aos-delay="200">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h5 class="fw-bold mb-0" style="color: var(--text-dark);"><i class="ri-compass-3-line text-primary me-2"></i>Featured Suggested Hotspots</h5>
+          <span class="small text-muted">Tap any card to fly immediately on the map</span>
+        </div>
+        <div class="suggest-tray-scroll" id="suggestHotspotsTray">
+          <!-- Dynamically populated hotspot cards -->
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================== -->
+  <!-- 5. POPULAR DESTINATIONS SECTION                -->
+  <!-- ============================================== -->
+  <section class="destinations-section py-5" id="Destinations">
+    <div class="container py-lg-4">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-700 mx-auto mb-4" data-aos="fade-up">
+        <div class="section-badge mb-2">
+          <i class="ri-flight-takeoff-line me-1"></i> Wanderlust Awaits
+        </div>
+        <h2 class="section-title">Popular Global Destinations</h2>
+        <p class="section-subtitle">
+          Explore iconic landmarks, secret paradises, and vibrant cultures. Type any country to reveal all its premier destinations and iconic places.
+        </p>
+      </div>
+
+      <!-- Search & Filter Bar with Country Suggestions Row -->
+      <div class="destination-filter-wrapper mb-5" data-aos="fade-up" data-aos-delay="100">
+        <div class="filter-controls-row">
+          
+          <!-- Live Text Search Input -->
+          <div class="destination-search-box">
+            <i class="ri-search-line search-icon"></i>
+            <input type="text" id="destSearchInput" class="form-control filter-search-input" placeholder="Search any country or city (e.g. India, Japan, Egypt, Thailand, Dubai, Paris)...">
+            <button class="clear-search-btn d-none" id="clearSearchBtn" title="Clear Search">
+              <i class="ri-close-line"></i>
+            </button>
+          </div>
+
+          <!-- Category Pill Buttons -->
+          <div class="filter-pills-list">
+            <button class="filter-pill active" data-filter="all">All Places</button>
+            <button class="filter-pill" data-filter="europe">Europe</button>
+            <button class="filter-pill" data-filter="asia">Asia</button>
+            <button class="filter-pill" data-filter="americas">Americas</button>
+            <button class="filter-pill" data-filter="africa">Africa & Middle East</button>
+            <button class="filter-pill" data-filter="island">Islands & Beaches</button>
+          </div>
+
+        </div>
+
+        <!-- Quick Country Suggestion Chips -->
+        <div class="country-suggestions-row">
+          <span class="country-suggestion-label"><i class="ri-earth-line me-1"></i>Quick Countries:</span>
+          <button type="button" class="country-quick-pill" data-country="India">🇮🇳 India</button>
+          <button type="button" class="country-quick-pill" data-country="Japan">🇯🇵 Japan</button>
+          <button type="button" class="country-quick-pill" data-country="France">🇫🇷 France</button>
+          <button type="button" class="country-quick-pill" data-country="Italy">🇮🇹 Italy</button>
+          <button type="button" class="country-quick-pill" data-country="United Arab Emirates">🇦🇪 UAE</button>
+          <button type="button" class="country-quick-pill" data-country="Thailand">🇹🇭 Thailand</button>
+          <button type="button" class="country-quick-pill" data-country="Egypt">🇪🇬 Egypt</button>
+          <button type="button" class="country-quick-pill" data-country="Switzerland">🇨🇭 Switzerland</button>
+          <button type="button" class="country-quick-pill" data-country="USA">🇺🇸 USA</button>
+          <button type="button" class="country-quick-pill" data-country="Brazil">🇧🇷 Brazil</button>
+          <button type="button" class="country-quick-pill" data-country="Spain">🇪🇸 Spain</button>
+          <button type="button" class="country-quick-pill" data-country="Greece">🇬🇷 Greece</button>
+          <button type="button" class="country-quick-pill" data-country="Germany">🇩🇪 Germany</button>
+          <button type="button" class="country-quick-pill" data-country="Mexico">🇲🇽 Mexico</button>
+          <button type="button" class="country-quick-pill" data-country="Turkey">🇹🇷 Turkey</button>
+          <button type="button" class="country-quick-pill" data-country="Morocco">🇲🇦 Morocco</button>
+          <button type="button" class="country-quick-pill" data-country="Maldives">🇲🇻 Maldives</button>
+          <button type="button" class="country-quick-pill" data-country="Indonesia">🇮🇩 Indonesia</button>
+          <button type="button" class="country-quick-pill" data-country="Australia">🇦🇺 Australia</button>
+          <button type="button" class="country-quick-pill" data-country="Canada">🇨🇦 Canada</button>
+          <button type="button" class="country-quick-pill" data-country="Norway">🇳🇴 Norway</button>
+          <button type="button" class="country-quick-pill" data-country="Singapore">🇸🇬 Singapore</button>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mt-3 px-2">
+          <div class="filter-results-status text-muted small" id="filterStatus">
+            Showing curated world destinations
+          </div>
+          <div id="destActiveFilterNotice"></div>
+        </div>
+      </div>
+
+      <!-- Destination Cards Grid -->
+      <div class="row g-4" id="destinationsGrid">
+        
+        <!-- 1. Paris, France -->
+        <div class="col-lg-4 col-md-6 destination-item" data-category="europe" data-tags="paris france eiffel tower romance europe">
+          <div class="dest-card" data-aos="fade-up">
+            <div class="dest-card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=700&q=80" alt="Paris, France" class="dest-img" loading="lazy">
+              <span class="dest-category-badge">Europe</span>
+              <div class="dest-rating-pill">
+                <i class="fa-solid fa-star"></i> 4.9 <small>(1,420)</small>
+              </div>
+            </div>
+            <div class="dest-card-body">
+              <div class="dest-meta">
+                <span class="dest-location"><i class="ri-map-pin-2-fill text-danger me-1"></i>Paris, France</span>
+                <span class="dest-duration"><i class="ri-time-line me-1"></i>5 Days / 4 Nights</span>
+              </div>
+              <h3 class="dest-title">The City of Lights & Bohemian Streets</h3>
+              <p class="dest-desc">
+                Marvel at the Eiffel Tower at twilight, stroll the Seine riverfront, and experience world-class dining at Montmartre.
+              </p>
+              <div class="dest-footer">
+                <div class="dest-price-box">
+                  <span class="price-from">Starts from</span>
+                  <span class="price-val">$899 <span>/ person</span></span>
+                </div>
+                <a href="payment.html?dest=Paris&price=899" class="btn btn-primary-pill">Book Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Santorini, Greece -->
+        <div class="col-lg-4 col-md-6 destination-item" data-category="europe island" data-tags="santorini greece islands caldera sunset aegean sea">
+          <div class="dest-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="dest-card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=700&q=80" alt="Santorini, Greece" class="dest-img" loading="lazy">
+              <span class="dest-category-badge">Islands</span>
+              <div class="dest-rating-pill">
+                <i class="fa-solid fa-star"></i> 5.0 <small>(2,100)</small>
+              </div>
+            </div>
+            <div class="dest-card-body">
+              <div class="dest-meta">
+                <span class="dest-location"><i class="ri-map-pin-2-fill text-danger me-1"></i>Santorini, Greece</span>
+                <span class="dest-duration"><i class="ri-time-line me-1"></i>6 Days / 5 Nights</span>
+              </div>
+              <h3 class="dest-title">Sun-Kissed Oia & Aegean Sunset Vistas</h3>
+              <p class="dest-desc">
+                Iconic whitewashed cliffside villas, azure domes, volcanic wine tastings, and world-renowned caldera sunsets.
+              </p>
+              <div class="dest-footer">
+                <div class="dest-price-box">
+                  <span class="price-from">Starts from</span>
+                  <span class="price-val">$1,150 <span>/ person</span></span>
+                </div>
+                <a href="payment.html?dest=Santorini&price=1150" class="btn btn-primary-pill">Book Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Bali, Indonesia -->
+        <div class="col-lg-4 col-md-6 destination-item" data-category="asia island" data-tags="bali indonesia asia beach tropical ubud temples kuta">
+          <div class="dest-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="dest-card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=700&q=80" alt="Bali, Indonesia" class="dest-img" loading="lazy">
+              <span class="dest-category-badge">Asia</span>
+              <div class="dest-rating-pill">
+                <i class="fa-solid fa-star"></i> 4.9 <small>(3,400)</small>
+              </div>
+            </div>
+            <div class="dest-card-body">
+              <div class="dest-meta">
+                <span class="dest-location"><i class="ri-map-pin-2-fill text-danger me-1"></i>Bali, Indonesia</span>
+                <span class="dest-duration"><i class="ri-time-line me-1"></i>7 Days / 6 Nights</span>
+              </div>
+              <h3 class="dest-title">Tropical Ubud & Emerald Rice Terraces</h3>
+              <p class="dest-desc">
+                Immerse yourself in lush rain forests, ancient water temples, surf breaks, and tranquil wellness yoga retreats.
+              </p>
+              <div class="dest-footer">
+                <div class="dest-price-box">
+                  <span class="price-from">Starts from</span>
+                  <span class="price-val">$649 <span>/ person</span></span>
+                </div>
+                <a href="payment.html?dest=Bali&price=649" class="btn btn-primary-pill">Book Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Cape Town, South Africa -->
+        <div class="col-lg-4 col-md-6 destination-item" data-category="africa" data-tags="cape town south africa table mountain safari wine africa">
+          <div class="dest-card" data-aos="fade-up">
+            <div class="dest-card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=700&q=80" alt="Cape Town, South Africa" class="dest-img" loading="lazy">
+              <span class="dest-category-badge">Africa</span>
+              <div class="dest-rating-pill">
+                <i class="fa-solid fa-star"></i> 4.8 <small>(980)</small>
+              </div>
+            </div>
+            <div class="dest-card-body">
+              <div class="dest-meta">
+                <span class="dest-location"><i class="ri-map-pin-2-fill text-danger me-1"></i>Cape Town, South Africa</span>
+                <span class="dest-duration"><i class="ri-time-line me-1"></i>8 Days / 7 Nights</span>
+              </div>
+              <h3 class="dest-title">Table Mountain & Coastal Safari Drive</h3>
+              <p class="dest-desc">
+                Cable car rides up Table Mountain, penguin colonies at Boulders Beach, and thrilling Big Five safari drives.
+              </p>
+              <div class="dest-footer">
+                <div class="dest-price-box">
+                  <span class="price-from">Starts from</span>
+                  <span class="price-val">$1,299 <span>/ person</span></span>
+                </div>
+                <a href="payment.html?dest=CapeTown&price=1299" class="btn btn-primary-pill">Book Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Peru (Machu Picchu) -->
+        <div class="col-lg-4 col-md-6 destination-item" data-category="americas" data-tags="peru machu picchu cusco inca trail andes americas">
+          <div class="dest-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="dest-card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&w=700&q=80" alt="Machu Picchu, Peru" class="dest-img" loading="lazy">
+              <span class="dest-category-badge">Americas</span>
+              <div class="dest-rating-pill">
+                <i class="fa-solid fa-star"></i> 5.0 <small>(1,850)</small>
+              </div>
+            </div>
+            <div class="dest-card-body">
+              <div class="dest-meta">
+                <span class="dest-location"><i class="ri-map-pin-2-fill text-danger me-1"></i>Cusco & Machu Picchu, Peru</span>
+                <span class="dest-duration"><i class="ri-time-line me-1"></i>6 Days / 5 Nights</span>
+              </div>
+              <h3 class="dest-title">Inca Trail Citadel & Sacred Valley Trek</h3>
+              <p class="dest-desc">
+                Unearth the mysterious Incan citadel nestled in mist-shrouded Andean peaks with certified indigenous guides.
+              </p>
+              <div class="dest-footer">
+                <div class="dest-price-box">
+                  <span class="price-from">Starts from</span>
+                  <span class="price-val">$980 <span>/ person</span></span>
+                </div>
+                <a href="payment.html?dest=Peru&price=980" class="btn btn-primary-pill">Book Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Dubai, UAE -->
+        <div class="col-lg-4 col-md-6 destination-item" data-category="africa" data-tags="dubai uae middle east burj khalifa desert safari luxury shopping">
+          <div class="dest-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="dest-card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=700&q=80" alt="Dubai, UAE" class="dest-img" loading="lazy">
+              <span class="dest-category-badge">Middle East</span>
+              <div class="dest-rating-pill">
+                <i class="fa-solid fa-star"></i> 4.9 <small>(2,750)</small>
+              </div>
+            </div>
+            <div class="dest-card-body">
+              <div class="dest-meta">
+                <span class="dest-location"><i class="ri-map-pin-2-fill text-danger me-1"></i>Dubai, United Arab Emirates</span>
+                <span class="dest-duration"><i class="ri-time-line me-1"></i>5 Days / 4 Nights</span>
+              </div>
+              <h3 class="dest-title">Burj Khalifa Glitz & Desert Dunes Safari</h3>
+              <p class="dest-desc">
+                Futuristic architecture, hyper-luxury shopping, dhow marina cruises, and thrilling 4x4 red sand dune bashing.
+              </p>
+              <div class="dest-footer">
+                <div class="dest-price-box">
+                  <span class="price-from">Starts from</span>
+                  <span class="price-val">$799 <span>/ person</span></span>
+                </div>
+                <a href="payment.html?dest=Dubai&price=799" class="btn btn-primary-pill">Book Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Tokyo, Japan -->
+        <div class="col-lg-4 col-md-6 destination-item" data-category="asia" data-tags="tokyo japan shinjuku shibuya mount fuji asia cherry blossom">
+          <div class="dest-card" data-aos="fade-up">
+            <div class="dest-card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=700&q=80" alt="Tokyo, Japan" class="dest-img" loading="lazy">
+              <span class="dest-category-badge">Asia</span>
+              <div class="dest-rating-pill">
+                <i class="fa-solid fa-star"></i> 5.0 <small>(3,100)</small>
+              </div>
+            </div>
+            <div class="dest-card-body">
+              <div class="dest-meta">
+                <span class="dest-location"><i class="ri-map-pin-2-fill text-danger me-1"></i>Tokyo & Mt. Fuji, Japan</span>
+                <span class="dest-duration"><i class="ri-time-line me-1"></i>7 Days / 6 Nights</span>
+              </div>
+              <h3 class="dest-title">Neon Cyberpunk Shibuya & Serene Shrines</h3>
+              <p class="dest-desc">
+                Futuristic high-tech metropolis meeting ancient Meiji shrines, bullet trains to Mt. Fuji, and authentic ramen trails.
+              </p>
+              <div class="dest-footer">
+                <div class="dest-price-box">
+                  <span class="price-from">Starts from</span>
+                  <span class="price-val">$1,350 <span>/ person</span></span>
+                </div>
+                <a href="payment.html?dest=Tokyo&price=1350" class="btn btn-primary-pill">Book Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. Sydney, Australia -->
+        <div class="col-lg-4 col-md-6 destination-item" data-category="island" data-tags="sydney australia opera house bondi beach harbor">
+          <div class="dest-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="dest-card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=700&q=80" alt="Sydney, Australia" class="dest-img" loading="lazy">
+              <span class="dest-category-badge">Oceania</span>
+              <div class="dest-rating-pill">
+                <i class="fa-solid fa-star"></i> 4.8 <small>(1,250)</small>
+              </div>
+            </div>
+            <div class="dest-card-body">
+              <div class="dest-meta">
+                <span class="dest-location"><i class="ri-map-pin-2-fill text-danger me-1"></i>Sydney, Australia</span>
+                <span class="dest-duration"><i class="ri-time-line me-1"></i>6 Days / 5 Nights</span>
+              </div>
+              <h3 class="dest-title">Opera House Harbour & Bondi Beach Waves</h3>
+              <p class="dest-desc">
+                Sail across Sydney Harbour, conquer the BridgeClimb, and enjoy golden sunset cocktails along Bondi's coastal walk.
+              </p>
+              <div class="dest-footer">
+                <div class="dest-price-box">
+                  <span class="price-from">Starts from</span>
+                  <span class="price-val">$1,190 <span>/ person</span></span>
+                </div>
+                <a href="payment.html?dest=Sydney&price=1190" class="btn btn-primary-pill">Book Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9. Barcelona, Spain -->
+        <div class="col-lg-4 col-md-6 destination-item" data-category="europe" data-tags="barcelona spain sagrada familia gaudi tapas europe mediterranean">
+          <div class="dest-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="dest-card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=700&q=80" alt="Barcelona, Spain" class="dest-img" loading="lazy">
+              <span class="dest-category-badge">Europe</span>
+              <div class="dest-rating-pill">
+                <i class="fa-solid fa-star"></i> 4.9 <small>(1,630)</small>
+              </div>
+            </div>
+            <div class="dest-card-body">
+              <div class="dest-meta">
+                <span class="dest-location"><i class="ri-map-pin-2-fill text-danger me-1"></i>Barcelona, Spain</span>
+                <span class="dest-duration"><i class="ri-time-line me-1"></i>5 Days / 4 Nights</span>
+              </div>
+              <h3 class="dest-title">Gaudí Masterpieces & Mediterranean Tapas</h3>
+              <p class="dest-desc">
+                Stand beneath the towering spires of La Sagrada Família, wander Park Güell, and taste genuine Catalan seafood.
+              </p>
+              <div class="dest-footer">
+                <div class="dest-price-box">
+                  <span class="price-from">Starts from</span>
+                  <span class="price-val">$840 <span>/ person</span></span>
+                </div>
+                <a href="payment.html?dest=Barcelona&price=840" class="btn btn-primary-pill">Book Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10. Amalfi Coast, Italy -->
+        <div class="col-lg-4 col-md-6 destination-item" data-category="europe island" data-tags="amalfi coast positano italy mediterranean coast pasta wine europe">
+          <div class="dest-card" data-aos="fade-up">
+            <div class="dest-card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=700&q=80" alt="Amalfi Coast, Italy" class="dest-img" loading="lazy">
+              <span class="dest-category-badge">Europe</span>
+              <div class="dest-rating-pill">
+                <i class="fa-solid fa-star"></i> 5.0 <small>(2,400)</small>
+              </div>
+            </div>
+            <div class="dest-card-body">
+              <div class="dest-meta">
+                <span class="dest-location"><i class="ri-map-pin-2-fill text-danger me-1"></i>Amalfi Coast, Italy</span>
+                <span class="dest-duration"><i class="ri-time-line me-1"></i>6 Days / 5 Nights</span>
+              </div>
+              <h3 class="dest-title">Positano Cliffside & Lemon Grove Romance</h3>
+              <p class="dest-desc">
+                Dramatic winding cliffs, pastel houses plunging into sparkling waters, vintage Vespa tours, and artisanal limoncello.
+              </p>
+              <div class="dest-footer">
+                <div class="dest-price-box">
+                  <span class="price-from">Starts from</span>
+                  <span class="price-val">$1,250 <span>/ person</span></span>
+                </div>
+                <a href="payment.html?dest=Amalfi&price=1250" class="btn btn-primary-pill">Book Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 11. Grand Canyon & NYC, USA -->
+        <div class="col-lg-4 col-md-6 destination-item" data-category="americas" data-tags="usa new york grand canyon united states manhattan las vegas americas">
+          <div class="dest-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="dest-card-img-wrap">
+              <img src="https://images.unsplash.com/photo-1474044159687-1ee9f3a51722?auto=format&fit=crop&w=700&q=80" alt="USA Explorer" class="dest-img" loading="lazy">
+              <span class="dest-category-badge">Americas</span>
+              <div class="dest-rating-pill">
+                <i class="fa-solid fa-star"></i> 4.8 <small>(1,180)</small>
+              </div>
+            </div>
+            <div class="dest-card-body">
+              <div class="dest-meta">
+                <span class="dest-location"><i class="ri-map-pin-2-fill text-danger me-1"></i>Grand Canyon & NYC, USA</span>
+                <span class="dest-duration"><i class="ri-time-line me-1"></i>9 Days / 8 Nights</span>
+              </div>
+              <h3 class="dest-title">Broadway Lights to Red Rock Canyons</h3>
+              <p class="dest-desc">
+                Experience the buzz of Manhattan's Times Square, followed by helicopter flights over the majestic Grand Canyon.
+              </p>
+              <div class="dest-footer">
+                <div class="dest-price-box">
+                  <span class="price-from">Starts from</span>
+                  <span class="price-val">$1,499 <span>/ person</span></span>
+                </div>
+                <a href="payment.html?dest=USA&price=1499" class="btn btn-primary-pill">Book Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- No Results State -->
+      <div id="noDestResults" class="text-center py-5 d-none">
+        <i class="ri-compass-3-line fs-1 text-muted mb-3 d-block"></i>
+        <h4>No matching destinations found</h4>
+        <p class="text-muted">Try tweaking your search term or switch back to "All Places".</p>
+        <button class="btn btn-outline-primary mt-2" id="resetDestFilterBtn">Reset Filters</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================== -->
+  <!-- 5. TRIP PRICING & PACKAGES SECTION             -->
+  <!-- ============================================== -->
+  <section class="pricing-section py-5" id="trip">
+    <div class="container py-lg-4">
+      
+      <div class="text-center max-w-700 mx-auto mb-5" data-aos="fade-up">
+        <div class="section-badge mb-2">
+          <i class="ri-wallet-3-line me-1"></i> Transparent Pricing
+        </div>
+        <h2 class="section-title">Curated Trip Packages</h2>
+        <p class="section-subtitle">
+          Transparent, all-inclusive tiers tailored for every style of wanderer. Zero hidden charges, 100% refundable deposits up to 7 days prior.
+        </p>
+      </div>
+
+      <div class="row g-4 align-items-stretch">
+        
+        <!-- Package 1: Adventure Expedition -->
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="pricing-card h-100">
+            <div class="pricing-header">
+              <span class="pkg-category">Backpack & Thrills</span>
+              <h3 class="pkg-name">Adventure Expedition</h3>
+              <p class="pkg-desc">High adrenaline, mountain treks, camping & off-grid discovery.</p>
+              <div class="pkg-price-wrap">
+                <span class="currency">$</span>
+                <span class="amount">499</span>
+                <span class="period">/ trip</span>
+              </div>
+            </div>
+            <div class="pricing-body">
+              <div class="pkg-meta-badge">
+                <i class="ri-time-line"></i> 5 Days / 4 Nights &middot; 3★ Basecamps
+              </div>
+              <ul class="pkg-features">
+                <li><i class="ri-check-line text-success"></i> Wilderness Camping & Tents</li>
+                <li><i class="ri-check-line text-success"></i> Mountain Guide & Trek Gear</li>
+                <li><i class="ri-check-line text-success"></i> All Meals in the Wild</li>
+                <li><i class="ri-check-line text-success"></i> Emergency Medical Insurance</li>
+                <li class="disabled"><i class="ri-close-line text-muted"></i> 5-Star Hotel Suites</li>
+                <li class="disabled"><i class="ri-close-line text-muted"></i> Private Helicopter Transfer</li>
+              </ul>
+            </div>
+            <div class="pricing-footer">
+              <a href="payment.html?pkg=Adventure&price=499" class="btn btn-outline-pricing w-100">
+                Choose Adventure
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Package 2: Cultural Explorer (Popular) -->
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="pricing-card popular-card h-100">
+            <div class="popular-ribbon">Most Popular</div>
+            <div class="pricing-header">
+              <span class="pkg-category">Heritage & Arts</span>
+              <h3 class="pkg-name">Cultural Explorer</h3>
+              <p class="pkg-desc">Historical monuments, cooking masterclasses & museum passes.</p>
+              <div class="pkg-price-wrap">
+                <span class="currency">$</span>
+                <span class="amount">899</span>
+                <span class="period">/ trip</span>
+              </div>
+            </div>
+            <div class="pricing-body">
+              <div class="pkg-meta-badge badge-popular">
+                <i class="ri-time-line"></i> 7 Days / 6 Nights &middot; 4★ Boutique Hotels
+              </div>
+              <ul class="pkg-features">
+                <li><i class="ri-check-line text-success"></i> 4-Star Boutique City Stays</li>
+                <li><i class="ri-check-line text-success"></i> Certified Historian Guide</li>
+                <li><i class="ri-check-line text-success"></i> Skip-the-Line Museum Passes</li>
+                <li><i class="ri-check-line text-success"></i> Culinary Cooking Workshops</li>
+                <li><i class="ri-check-line text-success"></i> High-Speed Rail Tickets</li>
+                <li class="disabled"><i class="ri-close-line text-muted"></i> Private Yacht Charter</li>
+              </ul>
+            </div>
+            <div class="pricing-footer">
+              <a href="payment.html?pkg=Cultural&price=899" class="btn btn-accent-coral w-100">
+                Choose Explorer
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Package 3: Honeymoon Romantic Getaway -->
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="pricing-card h-100">
+            <div class="pricing-header">
+              <span class="pkg-category">Romance & Bliss</span>
+              <h3 class="pkg-name">Honeymoon Haven</h3>
+              <p class="pkg-desc">Private candlelight dinners, beachfront villas & couples spa.</p>
+              <div class="pkg-price-wrap">
+                <span class="currency">$</span>
+                <span class="amount">1,450</span>
+                <span class="period">/ couple</span>
+              </div>
+            </div>
+            <div class="pricing-body">
+              <div class="pkg-meta-badge">
+                <i class="ri-time-line"></i> 6 Days / 5 Nights &middot; 5★ Ocean Villas
+              </div>
+              <ul class="pkg-features">
+                <li><i class="ri-check-line text-success"></i> Private Overwater Pool Villa</li>
+                <li><i class="ri-check-line text-success"></i> Complimentary Champagne & Berries</li>
+                <li><i class="ri-check-line text-success"></i> Private Catamaran Sunset Cruise</li>
+                <li><i class="ri-check-line text-success"></i> Couples Balinese Massage</li>
+                <li><i class="ri-check-line text-success"></i> Romantic Beach Dinner for 2</li>
+                <li class="disabled"><i class="ri-close-line text-muted"></i> VIP Jet Charter</li>
+              </ul>
+            </div>
+            <div class="pricing-footer">
+              <a href="payment.html?pkg=Honeymoon&price=1450" class="btn btn-outline-pricing w-100">
+                Choose Romance
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Package 4: Luxury Escape -->
+        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+          <div class="pricing-card h-100">
+            <div class="pricing-header">
+              <span class="pkg-category">Ultra Premium</span>
+              <h3 class="pkg-name">Royal Luxury Escape</h3>
+              <p class="pkg-desc">Private chauffeur, 5-Star suites, Michelin gastronomy & VIP entry.</p>
+              <div class="pkg-price-wrap">
+                <span class="currency">$</span>
+                <span class="amount">2,299</span>
+                <span class="period">/ trip</span>
+              </div>
+            </div>
+            <div class="pricing-body">
+              <div class="pkg-meta-badge">
+                <i class="ri-time-line"></i> 10 Days / 9 Nights &middot; 5★ Ultra Luxury
+              </div>
+              <ul class="pkg-features">
+                <li><i class="ri-check-line text-success"></i> Presidential Penthouse Suites</li>
+                <li><i class="ri-check-line text-success"></i> 24/7 Dedicated Chauffeur Limousine</li>
+                <li><i class="ri-check-line text-success"></i> Michelin-Star Dining Reservations</li>
+                <li><i class="ri-check-line text-success"></i> Private Helicopter Island Hop</li>
+                <li><i class="ri-check-line text-success"></i> Personal Butler & Concierge</li>
+                <li><i class="ri-check-line text-success"></i> Unlimited VIP Airport Lounge Access</li>
+              </ul>
+            </div>
+            <div class="pricing-footer">
+              <a href="payment.html?pkg=Luxury&price=2299" class="btn btn-outline-pricing w-100">
+                Choose Luxury
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="text-center mt-5">
+        <a href="packages.html" class="btn btn-outline-primary px-4 py-2">
+          View All Extended Packages & Custom Dates <i class="ri-arrow-right-line ms-1"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================== -->
+  <!-- 6. INTERACTIVE REVIEW GALLERY                  -->
+  <!-- ============================================== -->
+  <section class="gallery-section py-5" id="ReviewGallery">
+    <div class="container py-lg-4">
+      
+      <div class="text-center max-w-700 mx-auto mb-4" data-aos="fade-up">
+        <div class="section-badge mb-2">
+          <i class="ri-camera-lens-line me-1"></i> Visual Diary
+        </div>
+        <h2 class="section-title">Travelers' Live Review Gallery</h2>
+        <p class="section-subtitle">
+          Real snapshots captured by Travel Dost explorers across continents. Hover and explore each memory in 3D perspective.
+        </p>
+      </div>
+
+      <!-- 3D Coverflow Container (Flipster compatible) -->
+      <div class="flipster-wrapper my-4" data-aos="zoom-in">
+        <div class="my-flipster">
+          <ul class="flipster-list">
+            
+            <li>
+              <div class="flip-card">
+                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Yosemite National Park" class="flip-img">
+                <div class="flip-overlay">
+                  <h4>Yosemite Valley Mist</h4>
+                  <p><i class="ri-user-smile-line me-1"></i> Captured by David M. &middot; USA</p>
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <div class="flip-card">
+                <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=600&q=80" alt="Cinque Terre, Italy" class="flip-img">
+                <div class="flip-overlay">
+                  <h4>Cinque Terre Colors</h4>
+                  <p><i class="ri-user-smile-line me-1"></i> Captured by Elena R. &middot; Italy</p>
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <div class="flip-card">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80" alt="Bora Bora Lagoon" class="flip-img">
+                <div class="flip-overlay">
+                  <h4>Bora Bora Turquoise</h4>
+                  <p><i class="ri-user-smile-line me-1"></i> Captured by Chloe & Liam &middot; UK</p>
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <div class="flip-card">
+                <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=600&q=80" alt="Kyoto Bamboo Grove" class="flip-img">
+                <div class="flip-overlay">
+                  <h4>Arashiyama Bamboo Forest</h4>
+                  <p><i class="ri-user-smile-line me-1"></i> Captured by Hiroshi T. &middot; Japan</p>
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <div class="flip-card">
+                <img src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=600&q=80" alt="Swiss Alps Zermatt" class="flip-img">
+                <div class="flip-overlay">
+                  <h4>Matterhorn Sunrise</h4>
+                  <p><i class="ri-user-smile-line me-1"></i> Captured by Lukas B. &middot; Germany</p>
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <div class="flip-card">
+                <img src="https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=600&q=80" alt="Dubai Marina Nights" class="flip-img">
+                <div class="flip-overlay">
+                  <h4>Dubai Marina Skyline</h4>
+                  <p><i class="ri-user-smile-line me-1"></i> Captured by Aisha K. &middot; UAE</p>
+                </div>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================== -->
+  <!-- 7. TOURIST GUIDES SECTION                      -->
+  <!-- ============================================== -->
+  <section class="tourist-section py-5" id="tourist">
+    <div class="container py-lg-4">
+      
+      <div class="text-center max-w-700 mx-auto mb-5" data-aos="fade-up">
+        <div class="section-badge mb-2">
+          <i class="ri-user-voice-line me-1"></i> Local Companions
+        </div>
+        <h2 class="section-title">Meet Our Certified Tourist Guides</h2>
+        <p class="section-subtitle">
+          Passionate storytellers, certified historians, and fluent multilingual locals ready to guide your every step safely.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        
+        <!-- Guide 1 -->
+        <div class="col-lg-3 col-sm-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="guide-card text-center">
+            <div class="guide-avatar-wrap">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="Camille Dupont" class="guide-avatar">
+              <span class="guide-status-online" title="Available for Bookings"></span>
+              <div class="guide-rating-badge">
+                <i class="fa-solid fa-star"></i> 4.9
+              </div>
+            </div>
+            <div class="guide-info mt-3">
+              <h4 class="guide-name">Camille Dupont</h4>
+              <p class="guide-region"><i class="ri-map-pin-line text-primary me-1"></i>Paris & Loire Valley, France</p>
+              <div class="guide-languages mb-2">
+                <span class="lang-tag">French (Native)</span>
+                <span class="lang-tag">English</span>
+                <span class="lang-tag">Spanish</span>
+              </div>
+              <p class="guide-bio">Specialist in Art History & Montmartre hidden food cellars with 8+ years experience.</p>
+              <div class="guide-socials">
+                <a href="#" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="ri-linkedin-fill"></i></a>
+                <a href="#" aria-label="Twitter"><i class="ri-twitter-x-line"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Guide 2 -->
+        <div class="col-lg-3 col-sm-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="guide-card text-center">
+            <div class="guide-avatar-wrap">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80" alt="Kenji Takahashi" class="guide-avatar">
+              <span class="guide-status-online" title="Available for Bookings"></span>
+              <div class="guide-rating-badge">
+                <i class="fa-solid fa-star"></i> 5.0
+              </div>
+            </div>
+            <div class="guide-info mt-3">
+              <h4 class="guide-name">Kenji Takahashi</h4>
+              <p class="guide-region"><i class="ri-map-pin-line text-primary me-1"></i>Tokyo & Kyoto, Japan</p>
+              <div class="guide-languages mb-2">
+                <span class="lang-tag">Japanese (Native)</span>
+                <span class="lang-tag">English</span>
+              </div>
+              <p class="guide-bio">Licensed Shinto shrine storyteller, culinary enthusiast, and Mt. Fuji trekking expert.</p>
+              <div class="guide-socials">
+                <a href="#" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="ri-linkedin-fill"></i></a>
+                <a href="#" aria-label="Twitter"><i class="ri-twitter-x-line"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Guide 3 -->
+        <div class="col-lg-3 col-sm-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="guide-card text-center">
+            <div class="guide-avatar-wrap">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80" alt="Lucia Moretti" class="guide-avatar">
+              <span class="guide-status-online" title="Available for Bookings"></span>
+              <div class="guide-rating-badge">
+                <i class="fa-solid fa-star"></i> 4.9
+              </div>
+            </div>
+            <div class="guide-info mt-3">
+              <h4 class="guide-name">Lucia Moretti</h4>
+              <p class="guide-region"><i class="ri-map-pin-line text-primary me-1"></i>Rome & Florence, Italy</p>
+              <div class="guide-languages mb-2">
+                <span class="lang-tag">Italian (Native)</span>
+                <span class="lang-tag">English</span>
+                <span class="lang-tag">German</span>
+              </div>
+              <p class="guide-bio">Classical archaeologist bringing Roman Colosseum and Renaissance legends vividly to life.</p>
+              <div class="guide-socials">
+                <a href="#" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="ri-linkedin-fill"></i></a>
+                <a href="#" aria-label="Twitter"><i class="ri-twitter-x-line"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Guide 4 -->
+        <div class="col-lg-3 col-sm-6" data-aos="fade-up" data-aos-delay="400">
+          <div class="guide-card text-center">
+            <div class="guide-avatar-wrap">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80" alt="Mateo Quispe" class="guide-avatar">
+              <span class="guide-status-online" title="Available for Bookings"></span>
+              <div class="guide-rating-badge">
+                <i class="fa-solid fa-star"></i> 5.0
+              </div>
+            </div>
+            <div class="guide-info mt-3">
+              <h4 class="guide-name">Mateo Quispe</h4>
+              <p class="guide-region"><i class="ri-map-pin-line text-primary me-1"></i>Cusco & Andes, Peru</p>
+              <div class="guide-languages mb-2">
+                <span class="lang-tag">Quechua</span>
+                <span class="lang-tag">Spanish</span>
+                <span class="lang-tag">English</span>
+              </div>
+              <p class="guide-bio">Native Quechua mountaineer with 14 years leading high-altitude Sacred Valley expeditions.</p>
+              <div class="guide-socials">
+                <a href="#" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="ri-linkedin-fill"></i></a>
+                <a href="#" aria-label="Twitter"><i class="ri-twitter-x-line"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================== -->
+  <!-- 8. HOTELS & RESORTS SECTION                    -->
+  <!-- ============================================== -->
+  <section class="hotel-section py-5" id="hotel">
+    <div class="container py-lg-4">
+      
+      <div class="text-center max-w-700 mx-auto mb-5" data-aos="fade-up">
+        <div class="section-badge mb-2">
+          <i class="ri-hotel-bed-line me-1"></i> Handpicked Stays
+        </div>
+        <h2 class="section-title">Luxury Hotels & Boutique Resorts</h2>
+        <p class="section-subtitle">
+          From infinity-pool cliffside suites in Greece to royal palace sanctuaries in Dubai. Every property vetted for impeccable service.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        
+        <!-- Hotel 1 -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="hotel-card">
+            <div class="hotel-img-wrap">
+              <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=700&q=80" alt="The Grand Cliffside Sanctuary" class="hotel-img">
+              <span class="hotel-tag">5-Star Luxury</span>
+              <div class="hotel-rating">
+                <i class="fa-solid fa-star text-warning"></i> 4.95
+              </div>
+            </div>
+            <div class="hotel-body">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <span class="hotel-loc text-muted small"><i class="ri-map-pin-line text-danger me-1"></i>Oia, Santorini, Greece</span>
+                <span class="hotel-night-price"><strong>$340</strong> <small>/ night</small></span>
+              </div>
+              <h3 class="hotel-name">Caldera Mirage Suites</h3>
+              <p class="hotel-desc">Carved into volcanic cliffs overlooking the sparkling Aegean Sea with private heated plunge pools.</p>
+              
+              <!-- Amenity Chips -->
+              <div class="amenity-chips mb-3">
+                <span class="chip"><i class="ri-wifi-line"></i> Free Wi-Fi</span>
+                <span class="chip"><i class="ri-drop-line"></i> Infinity Pool</span>
+                <span class="chip"><i class="ri-cup-line"></i> Breakfast</span>
+                <span class="chip"><i class="ri-spa-line"></i> Luxury Spa</span>
+              </div>
+
+              <a href="payment.html?hotel=CalderaMirage&price=340" class="btn btn-primary-pill w-100">Reserve Stay</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hotel 2 -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="hotel-card">
+            <div class="hotel-img-wrap">
+              <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=700&q=80" alt="Ayana Haven Villas" class="hotel-img">
+              <span class="hotel-tag">Eco Boutique</span>
+              <div class="hotel-rating">
+                <i class="fa-solid fa-star text-warning"></i> 4.92
+              </div>
+            </div>
+            <div class="hotel-body">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <span class="hotel-loc text-muted small"><i class="ri-map-pin-line text-danger me-1"></i>Ubud, Bali, Indonesia</span>
+                <span class="hotel-night-price"><strong>$220</strong> <small>/ night</small></span>
+              </div>
+              <h3 class="hotel-name">Ayana Rainforest Haven</h3>
+              <p class="hotel-desc">Suspended over the jungle canopy with open-air stone baths, yoga pavilions, and organic farm gastronomy.</p>
+              
+              <!-- Amenity Chips -->
+              <div class="amenity-chips mb-3">
+                <span class="chip"><i class="ri-wifi-line"></i> Free Wi-Fi</span>
+                <span class="chip"><i class="ri-plant-line"></i> Jungle Views</span>
+                <span class="chip"><i class="ri-cup-line"></i> Breakfast</span>
+                <span class="chip"><i class="ri-service-line"></i> Butler</span>
+              </div>
+
+              <a href="payment.html?hotel=AyanaHaven&price=220" class="btn btn-primary-pill w-100">Reserve Stay</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hotel 3 -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="hotel-card">
+            <div class="hotel-img-wrap">
+              <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=700&q=80" alt="Palazzo Del Sol" class="hotel-img">
+              <span class="hotel-tag">Ultra Luxury</span>
+              <div class="hotel-rating">
+                <i class="fa-solid fa-star text-warning"></i> 5.0
+              </div>
+            </div>
+            <div class="hotel-body">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <span class="hotel-loc text-muted small"><i class="ri-map-pin-line text-danger me-1"></i>Palm Jumeirah, Dubai, UAE</span>
+                <span class="hotel-night-price"><strong>$520</strong> <small>/ night</small></span>
+              </div>
+              <h3 class="hotel-name">Palazzo Del Sol Royal Resort</h3>
+              <p class="hotel-desc">Private beach cabanas, 24-karat gold spa treatments, and private helipad access on Dubai's iconic island.</p>
+              
+              <!-- Amenity Chips -->
+              <div class="amenity-chips mb-3">
+                <span class="chip"><i class="ri-wifi-line"></i> Free Wi-Fi</span>
+                <span class="chip"><i class="ri-sailboat-line"></i> Private Beach</span>
+                <span class="chip"><i class="ri-restaurant-line"></i> 5 Restaurants</span>
+                <span class="chip"><i class="ri-car-line"></i> Valet</span>
+              </div>
+
+              <a href="payment.html?hotel=PalazzoDelSol&price=520" class="btn btn-primary-pill w-100">Reserve Stay</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================== -->
+  <!-- 9. TESTIMONIALS SECTION                        -->
+  <!-- ============================================== -->
+  <section class="testimonial-section py-5" id="testimonial">
+    <div class="container py-lg-4">
+      
+      <div class="text-center max-w-700 mx-auto mb-5" data-aos="fade-up">
+        <div class="section-badge mb-2">
+          <i class="ri-heart-3-line me-1"></i> Customer Love
+        </div>
+        <h2 class="section-title">What Our Adventurers Say</h2>
+        <p class="section-subtitle">
+          Over 150,000 satisfied travelers from 120+ nations choose Travel Dost every year. Here are a few unvarnished stories.
+        </p>
+      </div>
+
+      <!-- Swiper Slider Container -->
+      <div class="swiper testimonial-swiper pb-5" data-aos="fade-up" data-aos-delay="100">
+        <div class="swiper-wrapper">
+          
+          <!-- Slide 1 -->
+          <div class="swiper-slide">
+            <div class="testimonial-card">
+              <div class="testimonial-rating mb-3">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p class="testimonial-quote">
+                "Our honeymoon in Santorini planned through Travel Dost was nothing short of cinematic. Every transfer was on time, our cave villa had an impossible view, and our guide Camille in Paris earlier was an absolute gem!"
+              </p>
+              <div class="testimonial-author mt-4">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Sarah & David" class="author-img">
+                <div>
+                  <h5 class="author-name mb-0">Sarah Jenkins</h5>
+                  <span class="author-country"><i class="ri-map-pin-line text-danger me-1"></i>London, United Kingdom</span>
+                  <span class="author-tag">Honeymoon Haven Package</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="swiper-slide">
+            <div class="testimonial-card">
+              <div class="testimonial-rating mb-3">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p class="testimonial-quote">
+                "As a solo traveler, safety is my #1 priority. Travel Dost assigned Kenji in Tokyo, who not only took me to hidden izakayas tourists never see, but also coordinated bullet train tickets seamlessly. 10/10 recommend!"
+              </p>
+              <div class="testimonial-author mt-4">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Marcus Vance" class="author-img">
+                <div>
+                  <h5 class="author-name mb-0">Marcus Vance</h5>
+                  <span class="author-country"><i class="ri-map-pin-line text-danger me-1"></i>Toronto, Canada</span>
+                  <span class="author-tag">Cultural Explorer Package</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="swiper-slide">
+            <div class="testimonial-card">
+              <div class="testimonial-rating mb-3">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p class="testimonial-quote">
+                "The Inca Trail trek to Machu Picchu exceeded every expectation. Our guide Mateo treated our family like royalty, and the camping gear provided was brand-new and spotless. Thank you Travel Dost for memories of a lifetime!"
+              </p>
+              <div class="testimonial-author mt-4">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" alt="Elena Rostova" class="author-img">
+                <div>
+                  <h5 class="author-name mb-0">Elena Rostova</h5>
+                  <span class="author-country"><i class="ri-map-pin-line text-danger me-1"></i>Sydney, Australia</span>
+                  <span class="author-tag">Adventure Expedition</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 4 -->
+          <div class="swiper-slide">
+            <div class="testimonial-card">
+              <div class="testimonial-rating mb-3">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <p class="testimonial-quote">
+                "From our VIP arrival at Dubai International to the penthouse at Palazzo Del Sol, every single minute was executed with German precision and Middle Eastern warmth. Their 24/7 concierge saved us when our flight got rescheduled."
+              </p>
+              <div class="testimonial-author mt-4">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Rajesh & Sunita Mehta" class="author-img">
+                <div>
+                  <h5 class="author-name mb-0">Rajesh & Sunita Mehta</h5>
+                  <span class="author-country"><i class="ri-map-pin-line text-danger me-1"></i>Mumbai, India</span>
+                  <span class="author-tag">Royal Luxury Escape</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Pagination & Navigation Buttons -->
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev custom-swiper-nav"></div>
+        <div class="swiper-button-next custom-swiper-nav"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================== -->
+  <!-- 10. FAQ ACCORDION                              -->
+  <!-- ============================================== -->
+  <section class="faq-section py-5" id="faq">
+    <div class="container py-lg-4">
+      
+      <div class="text-center max-w-700 mx-auto mb-5" data-aos="fade-up">
+        <div class="section-badge mb-2">
+          <i class="ri-question-line me-1"></i> Got Questions?
+        </div>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">
+          Everything you need to know about booking, visa assistance, cancellation policies, and travel insurance with Travel Dost.
+        </p>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-9" data-aos="fade-up" data-aos-delay="100">
+          <div class="accordion custom-accordion" id="travelFaqAccordion">
+            
+            <!-- FAQ 1 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  <i class="ri-calendar-check-line me-2 text-primary"></i> How do I book a tour package with Travel Dost?
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#travelFaqAccordion">
+                <div class="accordion-body">
+                  Booking is completely effortless: choose your desired destination or package, select your preferred dates and guest count, click <strong>"Book Now"</strong> to proceed to our secure checkout page, and receive instant confirmation with digital vouchers and guide contact information within seconds.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  <i class="ri-refund-2-line me-2 text-primary"></i> What is your cancellation and refund policy?
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#travelFaqAccordion">
+                <div class="accordion-body">
+                  We offer a <strong>100% money-back guarantee</strong> if you cancel up to 7 days before your tour commencement date. Cancellations made between 3 to 6 days prior receive an 80% refund or full credit towards future trips. Zero cancellation fee applies if travel is disrupted by government flight bans or force majeure events.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  <i class="ri-passport-line me-2 text-primary"></i> Do you assist with international visas and permits?
+                </button>
+              </h2>
+              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#travelFaqAccordion">
+                <div class="accordion-body">
+                  Yes! Our global visa desk provides end-to-end documentation assistance, official hotel booking vouchers, confirmed flight itineraries for embassy appointments, and expedited e-Visa applications for popular destinations including Europe (Schengen), Japan, UAE, UK, and USA.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingFour">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                  <i class="ri-shield-cross-line me-2 text-primary"></i> Is travel insurance included in the package?
+                </button>
+              </h2>
+              <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#travelFaqAccordion">
+                <div class="accordion-body">
+                  All our <strong>Cultural Explorer, Honeymoon, and Luxury Escape</strong> packages automatically include comprehensive emergency medical and baggage loss insurance up to $100,000. For custom itineraries, you can easily add worldwide travel insurance during checkout for a nominal daily fee.
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ 5 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingFive">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                  <i class="ri-secure-payment-line me-2 text-primary"></i> What payment methods are supported? Is it secure?
+                </button>
+              </h2>
+              <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#travelFaqAccordion">
+                <div class="accordion-body">
+                  We process payments using 256-bit bank-grade SSL encryption. We accept all major Credit/Debit Cards (Visa, MasterCard, American Express), Net Banking, PayPal, Apple Pay, Google Pay, and UPI. We never store your full card details on our servers.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================== -->
+  <!-- 11. CONTACT US SECTION                         -->
+  <!-- ============================================== -->
+  <section class="contact-section py-5" id="cnt-form">
+    <div class="container py-lg-4" id="Contact">
+      
+      <div class="text-center max-w-700 mx-auto mb-5" data-aos="fade-up">
+        <div class="section-badge mb-2">
+          <i class="ri-mail-send-line me-1"></i> Get In Touch
+        </div>
+        <h2 class="section-title">We'd Love to Hear From You</h2>
+        <p class="section-subtitle">
+          Have a question about a bespoke itinerary or need urgent travel assistance? Fill in the form below or contact our global desks directly.
+        </p>
+      </div>
+
+      <div class="row g-5">
+        
+        <!-- Contact Form Column -->
+        <div class="col-lg-7" data-aos="fade-right">
+          <div class="contact-form-card">
+            <h3 class="card-inner-title mb-4">Send Us a Direct Message</h3>
+            
+            <form id="contactForm" novalidate>
+              <!-- Alert feedback placeholder -->
+              <div id="contactFormAlert" class="alert d-none mb-4" role="alert"></div>
+
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" id="contactName" placeholder="Your Full Name" required>
+                    <label for="contactName"><i class="ri-user-line me-1"></i> Full Name *</label>
+                    <div class="invalid-feedback">Please enter your full name.</div>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-floating">
+                    <input type="email" class="form-control" id="contactEmail" placeholder="name@example.com" required>
+                    <label for="contactEmail"><i class="ri-mail-line me-1"></i> Email Address *</label>
+                    <div class="invalid-feedback">Please provide a valid email address.</div>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" id="contactSubject" placeholder="Trip Inquiry">
+                    <label for="contactSubject"><i class="ri-chat-1-line me-1"></i> Subject / Tour of Interest</label>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="form-floating">
+                    <textarea class="form-control" placeholder="Leave your message here" id="contactMessage" style="height: 140px" required></textarea>
+                    <label for="contactMessage"><i class="ri-message-2-line me-1"></i> Your Message / Itinerary Requirements *</label>
+                    <div class="invalid-feedback">Please enter a message before sending.</div>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <button type="submit" class="btn btn-accent-coral w-100 py-3 d-flex align-items-center justify-content-center gap-2" id="contactSubmitBtn">
+                    <i class="ri-send-plane-fill"></i>
+                    <span>Send Message to Travel Dost</span>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Direct Inquiry Cards Column -->
+        <div class="col-lg-5" data-aos="fade-left">
+          <div class="d-flex flex-column gap-3 h-100">
+            
+            <!-- Card 1: Headquarters -->
+            <div class="inquiry-card">
+              <div class="inquiry-icon bg-soft-blue">
+                <i class="ri-building-line text-primary"></i>
+              </div>
+              <div>
+                <h5>Global Headquarters</h5>
+                <p class="mb-1 text-muted">742 Evergreen Terrace, Suite 500</p>
+                <p class="mb-0 text-muted">San Francisco, CA 94107, USA</p>
+              </div>
+            </div>
+
+            <!-- Card 2: Phone & 24/7 Hotline -->
+            <div class="inquiry-card">
+              <div class="inquiry-icon bg-soft-purple">
+                <i class="ri-phone-line text-purple"></i>
+              </div>
+              <div>
+                <h5>24/7 Traveler Hotline</h5>
+                <p class="mb-1"><a href="tel:+18005558728" class="text-decoration-none fw-semibold">+1 (800) 555-TRAV (8728)</a></p>
+                <small class="text-success"><i class="ri-checkbox-circle-fill me-1"></i>Toll-Free Worldwide Assistance</small>
+              </div>
+            </div>
+
+            <!-- Card 3: Email Support -->
+            <div class="inquiry-card">
+              <div class="inquiry-icon bg-soft-coral">
+                <i class="ri-mail-unread-line text-danger"></i>
+              </div>
+              <div>
+                <h5>Email Inquiries</h5>
+                <p class="mb-1"><a href="mailto:support@traveldost.com" class="text-decoration-none fw-semibold">support@traveldost.com</a></p>
+                <small class="text-muted">Average response time: &lt; 30 minutes</small>
+              </div>
+            </div>
+
+            <!-- Interactive Map Preview Card -->
+            <div class="inquiry-card map-inquiry-card mt-auto">
+              <div class="d-flex align-items-center justify-content-between w-100">
+                <div>
+                  <h6 class="mb-1">Explore Full Interactive Map</h6>
+                  <p class="mb-0 text-muted small">View all live pins, hotels & routes</p>
+                </div>
+                <a href="mapa.html" class="btn btn-sm btn-primary-pill">
+                  Open Map <i class="ri-arrow-right-line ms-1"></i>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================== -->
+  <!-- 12. NEWSLETTER BANNER                          -->
+  <!-- ============================================== -->
+  <section class="subscribe py-5">
+    <div class="container">
+      <div class="subscribe-capsule" data-aos="zoom-in">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-6">
+            <span class="sub-badge"><i class="ri-mail-open-line me-1"></i> Weekly Travel Intel</span>
+            <h3 class="sub-title">Unlock Secret Travel Deals & Hidden Gems</h3>
+            <p class="sub-desc mb-0">Join 350,000+ wanderers receiving our handpicked flight drops, exclusive hotel perks, and zero spam.</p>
+          </div>
+          <div class="col-lg-6">
+            <form class="subscribe-form" id="newsletterForm">
+              <div class="input-group">
+                <input type="email" class="form-control sub-input" id="newsletterEmail" placeholder="Enter your best email address..." required>
+                <button class="btn btn-sub-submit" type="submit" id="newsletterBtn">
+                  <span>Subscribe</span>
+                  <i class="ri-send-plane-2-fill ms-1"></i>
+                </button>
+              </div>
+              <div id="newsletterAlert" class="mt-2 small"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================== -->
+  <!-- 13. FOOTER                                     -->
+  <!-- ============================================== -->
+  <footer class="footer">
+    <div class="container py-5">
+      <div class="row g-4 justify-content-between">
+        
+        <!-- Column 1: Brand story & Socials -->
+        <div class="col-lg-4 col-md-6">
+          <div class="footer-brand mb-3">
+            <a href="index.html" class="nav__brand text-decoration-none">
+              <div class="brand-icon-wrap">
+                <i class="fa-solid fa-earth-americas brand-globe"></i>
+              </div>
+              <span class="nav__logo">Tourguide<span>.</span></span>
+              <span class="brand-tag">Travel Dost</span>
+            </a>
+          </div>
+          <p class="footer-story text-muted mb-4">
+            Travel Dost is your trusted world navigator. We believe meaningful travel transforms lives, bridges cultures, and creates unforgettable lifelong stories.
+          </p>
+          <div class="footer-social-links">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="X Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <!-- Column 2: Quick Links -->
+        <div class="col-lg-2 col-md-6 col-6">
+          <h4 class="footer-col-title">Quick Links</h4>
+          <ul class="footer-links-list">
+            <li><a href="#Home"><i class="ri-arrow-right-s-line"></i> Home</a></li>
+            <li><a href="about.html"><i class="ri-arrow-right-s-line"></i> About Us</a></li>
+            <li><a href="packages.html"><i class="ri-arrow-right-s-line"></i> Tour Packages</a></li>
+            <li><a href="topdeals/topdeals.html"><i class="ri-arrow-right-s-line"></i> Top Deals</a></li>
+            <li><a href="membership.html"><i class="ri-arrow-right-s-line"></i> Membership</a></li>
+            <li><a href="feedback.html"><i class="ri-arrow-right-s-line"></i> Rate Our App</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Support & Legal -->
+        <div class="col-lg-3 col-md-6 col-6">
+          <h4 class="footer-col-title">Support & Legal</h4>
+          <ul class="footer-links-list">
+            <li><a href="privacy.html"><i class="ri-shield-keyhole-line"></i> Privacy Policy</a></li>
+            <li><a href="tnc.html"><i class="ri-file-text-line"></i> Terms & Conditions</a></li>
+            <li><a href="sitemap.html"><i class="ri-node-tree"></i> Sitemap</a></li>
+            <li><a href="mapa.html"><i class="ri-map-pin-2-line"></i> Interactive Map</a></li>
+            <li><a href="plantrip.html"><i class="ri-calendar-event-line"></i> Plan Itinerary</a></li>
+            <li><a href="404.html"><i class="ri-error-warning-line"></i> Error 404 Page</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Contact & Newsletter Details -->
+        <div class="col-lg-3 col-md-6">
+          <h4 class="footer-col-title">Contact & Helpdesk</h4>
+          <ul class="footer-contact-details mb-3">
+            <li><i class="ri-map-pin-line text-primary"></i> 742 Evergreen Terr, San Francisco, CA</li>
+            <li><i class="ri-phone-line text-primary"></i> +1 (800) 555-TRAV</li>
+            <li><i class="ri-mail-line text-primary"></i> contact@traveldost.com</li>
+            <li><i class="ri-time-line text-primary"></i> 24/7 Multilingual Support</li>
+          </ul>
+          <div class="trust-badge-footer">
+            <i class="ri-shield-check-fill text-success fs-5 me-2"></i>
+            <span class="small text-muted">PCI-DSS 3.2 Certified &amp; IATA Accredited Travel Partner</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Copyright Sub-Footer -->
+      <div class="footer-bottom-row mt-4 pt-4 border-top">
+        <div class="row align-items-center">
+          <div class="col-md-6 text-center text-md-start mb-2 mb-md-0">
+            <p class="mb-0 text-muted small">
+              &copy; <span id="currentYear">2026</span> <strong>Travel Dost (Tourguide.)</strong> All rights reserved. Crafted for global explorers.
+            </p>
+          </div>
+          <div class="col-md-6 text-center text-md-end">
+            <p class="mb-0 text-muted small">
+              Designed with modern HTML5, CSS3 Custom Properties &amp; Vanilla JavaScript.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ============================================== -->
+  <!-- VIDEO MODAL (Optional Direct Teaser Popup)    -->
+  <!-- ============================================== -->
+  <div class="modal fade" id="videoTeaserModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content bg-dark border-0">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title text-white" id="videoModalLabel"><i class="ri-film-line me-2 text-primary"></i>Travel Dost Story Preview</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-3">
+          <div class="ratio ratio-16x9">
+            <iframe id="teaserIframe" src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ" title="Travel Preview" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================== -->
+  <!-- EXTERNAL DEPENDENCIES & JAVASCRIPT SCRIPTS      -->
+  <!-- ============================================== -->
+  <!-- jQuery (Required for Flipster) -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+  <!-- Bootstrap 5 Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- AOS (Animate on Scroll) JS -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+  <!-- Typed.js -->
+  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+  <!-- Swiper.js -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+  <!-- jQuery Flipster JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.flipster/1.1.5/jquery.flipster.min.js"></script>
+
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+  <!-- Leaflet Map JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- Modular Custom Scripts -->
+  <script src="Theme.js"></script>
+  <script src="navbarToggle.js"></script>
+  <script src="index.js"></script>
+
+</body>
+</html>

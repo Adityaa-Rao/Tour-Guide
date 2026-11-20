@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Stories &amp; Expeditions - Tour Guide</title>
+  <meta name="description" content="Watch cinematic travel stories, documentary clips, and read explorer journals from Tour Guide voyages across the globe.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✈️</text></svg>">
+
+  <!-- Fonts & CDN CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@300;400;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Oxygen:wght@300;400;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="header-wrapper sticky-top">
+    <nav class="newNav container-fluid px-lg-5" id="mainNav">
+      <div class="nav-container">
+        <a href="index.html" class="nav__brand">
+          <div class="brand-icon-wrap"><i class="fa-solid fa-earth-americas brand-globe"></i></div>
+          <span class="nav__logo">Tourguide<span>.</span></span>
+          <span class="brand-tag">Travel Dost</span>
+        </a>
+
+        <div class="nav__menu-wrapper" id="navMenu">
+          <ul class="nav__list">
+            <li class="nav__item"><a href="index.html" class="nav__link"><i class="ri-home-4-line me-1"></i>Home</a></li>
+            <li class="nav__item"><a href="about.html" class="nav__link"><i class="ri-information-line me-1"></i>About</a></li>
+            <li class="nav__item"><a href="packages.html" class="nav__link"><i class="ri-suitcase-line me-1"></i>Packages</a></li>
+            <li class="nav__item"><a href="story.html" class="nav__link active"><i class="ri-movie-line me-1"></i>Stories</a></li>
+            <li class="nav__item"><a href="index.html#cnt-form" class="nav__link"><i class="ri-mail-send-line me-1"></i>Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="nav__actions d-flex align-items-center gap-2">
+          <a href="index.html" class="btn btn-sm btn-outline-nav"><i class="ri-home-4-line me-1"></i>Home</a>
+          <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Theme"><i class="ri-moon-line moon-icon"></i><i class="ri-sun-line sun-icon"></i></button>
+          <button class="nav__hamburger d-lg-none" id="navMenuBtn" aria-label="Toggle Menu"><span></span><span></span><span></span></button>
+        </div>
+      </div>
+    </nav>
+    <div class="mobile-nav-backdrop" id="navBackdrop"></div>
+  </header>
+
+  <!-- Featured Cinematic Video Banner -->
+  <section class="py-5" style="background: var(--secondary-color);">
+    <div class="container" data-aos="fade-up">
+      <div class="text-center max-w-700 mx-auto mb-4">
+        <div class="section-badge mb-2"><i class="ri-film-line me-1"></i> Featured Documentary</div>
+        <h1 class="hero-title mb-2">The Call of the Wild &amp; Ancient Paths</h1>
+        <p class="section-subtitle">A 4K cinematic expedition through Peru's Andean ridges and Switzerland's Matterhorn glaciers.</p>
+      </div>
+
+      <div class="ratio ratio-21x9 rounded-4 overflow-hidden shadow-lg border" style="border-color: var(--card-border) !important;">
+        <iframe src="https://www.youtube-nocookie.com/embed/ScMzIvxBSi4?rel=0" title="Travel Dost Cinema" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Explorer Stories Grid -->
+  <section class="py-5">
+    <div class="container">
+      <div class="text-center max-w-700 mx-auto mb-5" data-aos="fade-up">
+        <h2 class="section-title">Dispatches From The Field</h2>
+        <p class="section-subtitle">Personal essays, local folklore, and unforgettable travel anecdotes penned by our voyagers.</p>
+      </div>
+
+      <div class="row g-4">
+        
+        <!-- Story 1 -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="dest-card h-100">
+            <div class="dest-card-img-wrap" style="height: 220px;">
+              <img src="https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&w=700&q=80" alt="Inca Trail" class="dest-img">
+              <span class="dest-category-badge">Peru Expedition</span>
+            </div>
+            <div class="dest-card-body">
+              <div class="small text-muted mb-2"><i class="ri-calendar-line me-1"></i>October 2025 &middot; By David K.</div>
+              <h4 class="dest-title">Walking in the Footsteps of the Sun God</h4>
+              <p class="dest-desc">
+                When the morning clouds broke over Machu Picchu's Sun Gate, forty miles of grueling trail vanished into sheer wonder...
+              </p>
+              <div class="dest-footer">
+                <a href="packages.html" class="btn btn-sm btn-outline-primary">View Itinerary</a>
+                <a href="payment.html?pkg=PeruExpedition&price=980" class="btn btn-sm btn-accent-coral">Book This Tour</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Story 2 -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="dest-card h-100">
+            <div class="dest-card-img-wrap" style="height: 220px;">
+              <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=700&q=80" alt="Kyoto Zen" class="dest-img">
+              <span class="dest-category-badge">Japan Reflections</span>
+            </div>
+            <div class="dest-card-body">
+              <div class="small text-muted mb-2"><i class="ri-calendar-line me-1"></i>January 2026 &middot; By Chloe M.</div>
+              <h4 class="dest-title">Silence in Arashiyama: A Morning in Kyoto</h4>
+              <p class="dest-desc">
+                Before the city awakens, the wind whispering through 10,000 bamboo stalks sounds like an ancient flute playing for the soul...
+              </p>
+              <div class="dest-footer">
+                <a href="packages.html" class="btn btn-sm btn-outline-primary">View Itinerary</a>
+                <a href="payment.html?pkg=JapanHeritage&price=1150" class="btn btn-sm btn-accent-coral">Book This Tour</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Story 3 -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="dest-card h-100">
+            <div class="dest-card-img-wrap" style="height: 220px;">
+              <img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=700&q=80" alt="Santorini Sunset" class="dest-img">
+              <span class="dest-category-badge">Greece Romance</span>
+            </div>
+            <div class="dest-card-body">
+              <div class="small text-muted mb-2"><i class="ri-calendar-line me-1"></i>November 2025 &middot; By Liam &amp; Maya</div>
+              <h4 class="dest-title">The Oia Sunset That Changed Everything</h4>
+              <p class="dest-desc">
+                With a glass of volcanic Assyrtiko in hand and the caldera bathed in purple twilight, we realized some moments simply stop time...
+              </p>
+              <div class="dest-footer">
+                <a href="packages.html" class="btn btn-sm btn-outline-primary">View Itinerary</a>
+                <a href="payment.html?pkg=SantoriniHoneymoon&price=1150" class="btn btn-sm btn-accent-coral">Book This Tour</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container py-4 text-center">
+      <p class="mb-0 text-muted small">&copy; 2026 <strong>Travel Dost</strong>. Stories of the open world.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="Theme.js"></script>
+  <script src="navbarToggle.js"></script>
+  <script>
+    if (typeof AOS !== 'undefined') AOS.init({ duration: 800, once: true });
+  </script>
+</body>
+</html>
