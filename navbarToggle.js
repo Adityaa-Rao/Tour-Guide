@@ -1,5 +1,5 @@
 /**
- * Travel Dost - Navbar & Scroll Spy Controller (navbarToggle.js)
+ * Tourguide - Navbar & Scroll Spy Controller (navbarToggle.js)
  * Manages Mobile Drawer, Backdrop, Header Shadow, and Active Nav Scroll Spy
  */
 document.addEventListener('DOMContentLoaded', () => {
